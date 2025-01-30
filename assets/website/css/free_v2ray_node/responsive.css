@@ -1,0 +1,143 @@
+@media screen and (max-width: 1375px) { 
+    .banner {
+        height: auto;
+        padding-top: 50px;
+    }
+    .banner h1, .banner h2 {
+        font-size: 40px;
+        font-weight: 500 !important;
+    }
+
+    .feature {
+        margin-top: 70px;
+    }
+
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) { 
+.banner {
+    height: auto;
+    padding-top: 50px;
+}
+    .banner h1, .banner h2 {
+        font-size: 40px;
+        font-weight: 500 !important;
+    }
+    
+    .feature {
+        margin-top: 70px;
+    }
+
+}
+
+@media screen and (max-width: 600px) { 
+    
+    body{
+        overflow-x: hidden;
+    }
+    
+    .nav {
+        top: 80px;
+    }
+    
+    .sticky.nav {
+        top: 0px;
+    }
+    
+    .banner {
+        height: auto;
+        padding-top: 50px;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+        outline: 0;
+        border: 0;
+    }
+    
+    .navbar-toggler {
+        color: #fff;
+    }
+    
+    .sticky .navbar-toggler {
+        color: #000;
+    }
+    
+    .navbar-nav { 
+        background-color: #110050;
+        position: relative;
+        z-index: 9;
+    }
+    
+    .sticky .navbar-nav { 
+        background-color: #fff;
+    }
+    
+    .banner h1,.banner h2 {
+        font-size: 40px;
+        font-weight: 500 !important;
+    }
+    
+    .feature { 
+        margin-top: 70px;
+        
+    }
+    
+    .about .img-box .two {
+        position: relative; 
+        width: 100%; 
+        top: 0;
+        right: 0;
+    }
+    
+    .about .img-box .one {
+        display: none;
+    }
+    
+    .process-card {
+        position: relative;
+        padding-left: 20px;
+    }
+    
+    .about .img-box-two .two {
+        display: none;
+    }
+    
+    
+    .video-box::before { 
+        border-bottom: 350px solid #110050;
+        border-right: 380px solid transparent; 
+    }
+    
+    .case-details .case-img .case-info {
+        position: relative;
+    }
+    
+    .contact-card {
+        padding: 30px;
+    }
+    
+    .protflio .button {
+        font-size: 14px;
+        padding: 6px 12px;
+        margin: 4px;
+    }
+    
+    .element-item {
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%;
+        position: relative !important;
+        top:inherit !important;
+    }
+    
+    .protflio {
+       margin-bottom: 100px;
+    }
+ 
+}
+
