@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-30585.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>如何在 C# 循环中捕获局部变量？</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="问题： 我遇到了一个有趣的问题，它的代码大概是这样的。 List&lt;Func&lt;int&gt;&gt;&nbsp;actions&nbsp;=&nbsp;new&nbsp;List&lt;Fu" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-30585.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="如何在 C# 循环中捕获局部变量？" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/1c3393a904ff1c56058d96610f15f42e.webp" />
+        <meta property="og:release_date" content="2024-12-24T09:42:38" />
+    <meta property="og:updated_time" content="2024-12-24T09:42:38" />
+        <meta property="og:description" content="问题： 我遇到了一个有趣的问题，它的代码大概是这样的。 List&lt;Func&lt;int&gt;&gt;&nbsp;actions&nbsp;=&nbsp;new&nbsp;List&lt;Fu" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="如何在 C# 循环中捕获局部变量？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>如何在 C# 循环中捕获局部变量？</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>问题：</h2> <p>我遇到了一个有趣的问题，它的代码大概是这样的。</p> <pre><code>List&lt;Func&lt;int&gt;&gt;&nbsp;actions&nbsp;=&nbsp;new&nbsp;List&lt;Func&lt;int&gt;&gt;();  int&nbsp;variable&nbsp;=&nbsp;0; while&nbsp;(variable&nbsp;&lt;&nbsp;5) { &nbsp;&nbsp;&nbsp;&nbsp;actions.Add(()&nbsp;=&gt;&nbsp;variable&nbsp;*&nbsp;2); &nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;variable; }  foreach&nbsp;(var&nbsp;act&nbsp;in&nbsp;actions) { &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(act.Invoke()); }  </code></pre> <p>我的期望输出是&nbsp;<code>0,2,4,6,8</code>，但它最终输出的是五个 10，看起来像是这些 action 上下文捕获的都是同一个变量。</p> <p>请问是否有变通的方法实现我要的预期结果呢？</p> <h2>解答方案：</h2> <p>变通方法就是在你的 loop 循环体中使用一个中间变量，并将其送入到 lambda 体中，参考如下代码：</p> <pre><code class="language-cs">List&lt;Func&lt;int&gt;&gt;&nbsp;actions&nbsp;=&nbsp;new&nbsp;List&lt;Func&lt;int&gt;&gt;();  int&nbsp;variable&nbsp;=&nbsp;0; while&nbsp;(variable&nbsp;&lt;&nbsp;5) { &nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;variable1&nbsp;=&nbsp;variable; &nbsp;&nbsp;&nbsp;&nbsp;actions.Add(()&nbsp;=&gt;&nbsp;variable1&nbsp;*&nbsp;2); &nbsp;&nbsp;&nbsp;&nbsp;++variable; }  foreach&nbsp;(var&nbsp;act&nbsp;in&nbsp;actions) { &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(act.Invoke()); }  Console.ReadLine();  </code></pre> <p>其实这种情况在多线程下也同样会发生，比如下面的代码：</p> <pre><code class="language-cs">for&nbsp;(int&nbsp;counter&nbsp;=&nbsp;1;&nbsp;counter&nbsp;&lt;=&nbsp;5;&nbsp;counter++) { &nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;Thread&nbsp;(()&nbsp;=&gt;&nbsp;Console.Write&nbsp;(counter)).Start(); }  </code></pre> <p>你以为会打印出&nbsp;<code>1,2,3,4,5</code>，最后的结果非常有趣，在我这里的输出结果是：<code>2,1,3,3,4</code>&nbsp;，你那边的结果肯定又不一样了。</p> <p>唯一的解决方案就是使用&nbsp;<code>局部变量</code>，修改后的代码如下：</p> <pre><code class="language-cs">for&nbsp;(int&nbsp;counter&nbsp;=&nbsp;1;&nbsp;counter&nbsp;&lt;=&nbsp;5;&nbsp;counter++) { &nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;localVar=&nbsp;counter; &nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;Thread&nbsp;(()&nbsp;=&gt;&nbsp;Console.Write&nbsp;(localVar)).Start(); }  </code></pre> <h2>总结</h2> <p>可能有很多朋友不知道为什么加了一个&nbsp;<code>variable1</code>&nbsp;变量之后，代码就正确的，要想分析，可以看 C# 生成的 IL 代码。</p> <pre><code class="language-cs">private&nbsp;static&nbsp;void&nbsp;Main(string[]&nbsp;args) { &nbsp;List&lt;Func&lt;int&gt;&gt;&nbsp;actions&nbsp;=&nbsp;new&nbsp;List&lt;Func&lt;int&gt;&gt;(); &nbsp;for&nbsp;(int&nbsp;variable&nbsp;=&nbsp;0;&nbsp;variable&nbsp;&lt;&nbsp;5;&nbsp;variable++) &nbsp;{ &nbsp;&nbsp;&lt;&gt;c__DisplayClass0_0&nbsp;&lt;&gt;c__DisplayClass0_&nbsp;=&nbsp;new&nbsp;&lt;&gt;c__DisplayClass0_0(); &nbsp;&nbsp;&lt;&gt;c__DisplayClass0_.variable1&nbsp;=&nbsp;variable; &nbsp;&nbsp;actions.Add(new&nbsp;Func&lt;int&gt;(&lt;&gt;c__DisplayClass0_.&lt;Main&gt;b__0)); &nbsp;} &nbsp;foreach&nbsp;(Func&lt;int&gt;&nbsp;act&nbsp;in&nbsp;actions) &nbsp;{ &nbsp;&nbsp;Console.WriteLine(act()); &nbsp;} &nbsp;Console.ReadLine(); }  </code></pre> <p>可以清楚的看到，那个所谓的&nbsp;<code>variable1</code>&nbsp;成了匿名类&nbsp;<code>c__DisplayClass0_0</code>&nbsp;下的字段了，而且foreach循环中每次都是new的，所以这个字段必然不一样，这也就保证了正确的结果。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-30050.htm">猫三联一针多少钱（猫三联打几针多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-30587.htm">Cesium DrawCommand [1] 不谈地球 画个三角形</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-node-share.htm" title="ShadowsocksR Node节点订阅每天更新18.3M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新18.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新18.2M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新18.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24042.htm" title="被猫抓伤怎么看是不是得了狂犬病（被猫抓伤如何判断是否得狂犬病）">被猫抓伤怎么看是不是得了狂犬病（被猫抓伤如何判断是否得狂犬病）</a></li>
+                        <li class="py-2"><a href="/news/article-31433.htm" title="被猫抓出血了一定要***吗多少钱（被猫抓出血要***吗?）">被猫抓出血了一定要***吗多少钱（被猫抓出血要***吗?）</a></li>
+                        <li class="py-2"><a href="/news/article-25907.htm" title="谭木匠水黄杨木梳功效(谭木匠水黄杨梳子价格)">谭木匠水黄杨木梳功效(谭木匠水黄杨梳子价格)</a></li>
+                        <li class="py-2"><a href="/news/article-26387.htm" title="猫咪三针疫苗打完多久可以洗澡啊（猫咪三针疫苗后多久打狂犬）">猫咪三针疫苗打完多久可以洗澡啊（猫咪三针疫苗后多久打狂犬）</a></li>
+                        <li class="py-2"><a href="/news/article-33920.htm" title="济南宠物猫领养中心地址 济南宠物猫领养中心地址电话">济南宠物猫领养中心地址 济南宠物猫领养中心地址电话</a></li>
+                        <li class="py-2"><a href="/news/article-44677.htm" title="正确计算linux系统内存使用率">正确计算linux系统内存使用率</a></li>
+                        <li class="py-2"><a href="/news/article-40231.htm" title="狗粮批发市场进货渠道小包装多少钱一箱（狗粮批发市场进货渠道小包装多少钱一箱）">狗粮批发市场进货渠道小包装多少钱一箱（狗粮批发市场进货渠道小包装多少钱一箱）</a></li>
+                        <li class="py-2"><a href="/news/article-49715.htm" title="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰">00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

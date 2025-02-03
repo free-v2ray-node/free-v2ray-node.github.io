@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-30587.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cesium DrawCommand [1] 不谈地球 画个三角形</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="目录  0. 前言  0.1. 源码中的 DrawCommand   1. 创建  1.1. 构成要素 - VertexArray 1.2. 构成要素 - ShaderProgram 1.3. 构成要" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-30587.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="Cesium DrawCommand [1] 不谈地球 画个三角形" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/fb3eb5cf24cde301875b52b99affd055.webp" />
+        <meta property="og:release_date" content="2024-12-24T09:42:38" />
+    <meta property="og:updated_time" content="2024-12-24T09:42:38" />
+        <meta property="og:description" content="目录  0. 前言  0.1. 源码中的 DrawCommand   1. 创建  1.1. 构成要素 - VertexArray 1.2. 构成要素 - ShaderProgram 1.3. 构成要" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Cesium DrawCommand [1] 不谈地球 画个三角形">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>Cesium DrawCommand [1] 不谈地球 画个三角形</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#0-%E5%89%8D%E8%A8%80" rel="nofollow">0. 前言</a> <ul> <li><a href="#01-%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84-drawcommand" rel="nofollow">0.1. 源码中的 DrawCommand</a></li> </ul> </li> <li><a href="#1-%E5%88%9B%E5%BB%BA" rel="nofollow">1. 创建</a> <ul> <li><a href="#11-%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0---vertexarray" rel="nofollow">1.1. 构成要素 - VertexArray</a></li> <li><a href="#12-%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0---shaderprogram" rel="nofollow">1.2. 构成要素 - ShaderProgram</a></li> <li><a href="#13-%E6%9E%84%E6%88%90%E8%A6%81%E7%B4%A0---webgl-%E7%9A%84%E7%BB%9F%E4%B8%80%E5%80%BC" rel="nofollow">1.3. 构成要素 - WebGL 的统一值</a></li> <li><a href="#14-%E6%B8%B2%E6%9F%93%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1---renderstate" rel="nofollow">1.4. 渲染状态对象 - RenderState</a></li> <li><a href="#15-%E5%85%B6%E5%AE%83%E6%9E%84%E6%88%90%E5%9B%A0%E5%AD%90" rel="nofollow">1.5. 其它构成因子</a> <ul> <li><a href="#-%E7%BB%98%E5%88%B6%E7%9A%84%E9%80%9A%E9%81%93%E7%B1%BB%E5%9E%8B---pass" rel="nofollow">① 绘制的通道类型 - Pass</a></li> <li><a href="#-%E7%BB%98%E5%88%B6%E7%9A%84%E5%9B%BE%E5%85%83%E7%B1%BB%E5%9E%8B---webgl-%E7%BB%98%E5%88%B6%E5%B8%B8%E6%95%B0" rel="nofollow">② 绘制的图元类型 - WebGL 绘制常数</a></li> <li><a href="#-%E7%A6%BB%E5%B1%8F%E7%BB%98%E5%88%B6%E5%AE%B9%E5%99%A8---framebuffer" rel="nofollow">③ 离屏绘制容器 - Framebuffer</a></li> <li><a href="#-%E6%A8%A1%E5%9E%8B%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5---matrix4" rel="nofollow">④ 模型坐标变换矩阵 - Matrix4</a></li> <li><a href="#-%E5%85%B6%E5%AE%83" rel="nofollow">⑤ 其它</a></li> </ul> </li> <li><a href="#16-%E6%88%91%E4%BB%AC%E6%9D%A5%E5%AE%9E%E8%B7%B5%E4%B8%80%E5%8F%91%E7%BA%AF%E8%89%B2%E4%B8%89%E8%A7%92%E5%BD%A2" rel="nofollow">1.6. 我们来实践一发纯色三角形</a></li> </ul> </li> <li><a href="#2-%E6%84%8F%E4%B9%89---%E8%87%AA%E5%AE%9A%E4%B9%89-primitiveprimitivelike" rel="nofollow">2. 意义 - 自定义 Primitive（PrimitiveLike）</a> <ul> <li><a href="#%E7%82%B9%E5%88%B0%E4%B8%BA%E6%AD%A2" rel="nofollow">点到为止</a></li> </ul> </li> <li><a href="#3-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" rel="nofollow">3. 参考资料</a></li> </ul> </div> <hr/> </h1> <p><code>Primitive API</code> 是公开的 API 的最底层了，它面向的场景是高性能、可自定义材质着色器（<code>Appearance API + FabricMaterial Specification</code>）、静态三维物体。</p> <p>尽管如此，<code>Primitive API</code> 仍然封装了大量几何体类、材质类、WebWorker，而且目前开放自定义着色器 API 的只有三维模型类的新架构，还没下放到<code>Primitive API</code>。</p> <p>如果 API 包袱不想那么重，又希望可以使用自己的模型格式（必须是三角面），那么私有的<code>DrawCommand + VertexArray</code> 接口就非常合适了，它的风格已经是最接近 CesiumJS WebGL 底层的一类 API 了。</p> <p><code>DrawCommand</code>，是 Cesium 封装 WebGL 的一个优秀设计，它把绘图数据（<code>VertexArray</code>）和绘图行为（<code>ShaderProgram</code>）作为一个对象，待时机合适，也就是<code>Scene</code> 执行<code>executeCommand</code> 函数时，帧状态对象上所有的指令对象就会使用 WebGL 函数执行，要什么就 bind 什么，做到了在绘图时的用法一致，上层应用接口只需生成指令对象。</p> <h2 id="01-源码中的-drawcommand">0.1. 源码中的 DrawCommand</h2> <p>譬如在<code>Primitive.js</code> 模块中的<code>createCommands</code> 函数，它就是负责把<code>Primitive</code> 对象的参数化数据或 WebWorker 计算来的数据合并生成<code>DrawCommand</code> 的地方：</p> <pre><code class="language-js">function createCommands(/* 参数省略 */) {   // ...   const length = colorCommands.length;   let vaIndex = 0;   for (let i = 0; i &lt; length; ++i) {     let colorCommand;      // ...      colorCommand = colorCommands[i];     if (!defined(colorCommand)) {       colorCommand = colorCommands[i] = new DrawCommand({         owner: primitive, // 入参，即 Primitive 对象         primitiveType: primitive._primitiveType,       });     }     colorCommand.vertexArray = primitive._va[vaIndex]; // VertexArray     colorCommand.renderState = primitive._frontFaceRS; // 渲染状态     colorCommand.shaderProgram = primitive._sp; // ShaderProgram     colorCommand.uniformMap = uniforms; // 统一值     colorCommand.pass = pass; // 该指令的通道顺序   }   // ... }</code></pre> </h1> <h2 id="11-构成要素---vertexarray">1.1. 构成要素 - VertexArray</h2> <p>Cesium 把 WebGL 的顶点缓冲和索引缓冲包装成了<code>Buffer</code>，然后为了方便，将这些顶点相关的缓冲绑定在了一个对象里，叫做<code>VertexArray</code>，内部会启用 WebGL 的<code>VAO</code> 功能。</p> <p>最快速创建<code>VertexArray</code> 的办法，就是调用其静态方法<code>VertexArray.fromGeometry()</code>，但是这需要<code>Geometry API</code> 来帮忙。</p> <p>这里想直接使用<code>Buffer</code> 来说明，那么就得先创建<code>Buffer</code>：</p> <pre><code class="language-js">const positionBuffer = Buffer.createVertexBuffer({   context: context,   sizeInBytes: 12,   usage: BufferUsage.STATIC_DRAW,   typedArray: new Float32Array([/* ... */]) }) const attributes = [   {     index: 0,     enabled: true,     vertexBuffer: positionBuffer,     componentsPerAttribute: 3,     componentDatatype: ComponentDatatype.FLOAT,     normalize: false,     offsetInBytes: 0,     strideInBytes: 0, // 紧密组合在一起，没有 byteStride     instanceDivisor: 0 // 不实例化绘制   } ]</code></pre> <p>调用<code>Buffer</code> 私有类的静态方法<code>createVertexBuffer()</code>，即可创建内置了<code>WebGLBuffer</code> 的顶点缓冲对象<code>positionBuffer</code>，然后使用普通的对象数组创建出<strong>顶点属性</strong><code>attributes</code>，每个对象就描述了一个顶点属性。接下来就可以拿这些简单的材料创建<code>VertexArray</code> 了：</p> <pre><code class="language-js">const va = new VertexArray({   context: context,   attributes: attributes })</code></pre> <p><code>Context</code> 封装了 WebGL 的各种函数调用，你可以从<code>Scene</code> 中或直接从<code>FrameState</code> 上获取到。</p> <blockquote> <p>这一步创建的<code>Buffer</code>，顶点坐标是直角坐标系下的，是最原始的坐标值，除非在着色器里做矩阵变换，或者这些直角坐标就在世界坐标系的地表附近。它是一堆没有具体语义的、纯粹数学几何的坐标，与渲染管线无关。所以，对于地表某处的坐标点，通常要配合 ENU 转换矩阵 + 内置的 MVP 转换矩阵来使用，见 1.6 的例子。</p> </blockquote> <p>这里还有一个例子，使用了两个顶点属性（VertexAttribute）：</p> <pre><code class="language-js">const positionBuffer = Buffer.createVertexBuffer({   context: context,   sizeInBytes: 12,   usage: BufferUsage.STATIC_DRAW }) const normalBuffer = Buffer.createVertexBuffer({   context: context,   sizeInBytes: 12,   usage: BufferUsage.STATIC_DRAW }) const attributes = [   {     index: 0,     vertexBuffer: positionBuffer,     componentsPerAttribute: 3,     componentDatatype: ComponentDatatype.FLOAT   },   {     index: 1,     vertexBuffer: normalBuffer,     componentsPerAttribute: 3,     componentDatatype: ComponentDatatype.FLOAT   } ] const va = new VertexArray({   context: context,   attributes: attributes })</code></pre> <p>这里把坐标缓冲和法线缓冲分开存到两个对象里了，其实 WebGL 可以用字节交错的格式，把全部顶点属性的缓冲都合并成一个的方式的，就不具体讲了，读者可以自行查阅 WebGL 中 WebGLBuffer 的用法。</p> <h2 id="12-构成要素---shaderprogram">1.2. 构成要素 - ShaderProgram</h2> <p>WebGL 的着色器也被 CesiumJS 封装了，自带缓存机制，并使用大量正则等手段做了着色器源码匹配、解析、管理。</p> <p>着色器代码由<code>ShaderSource</code> 管理，<code>ShaderProgram</code> 则管理起多个着色器源码，也就是着色器本身。使用<code>ShaderCache</code> 作为着色器程序的缓存容器。它们的层级关系如下：</p> <pre><code>Context   ┖ ShaderCache     ┖ ShaderProgram       ┖ ShaderSource</code></pre> <p>你可以自己创建<code>ShaderSource</code>、<code>ShaderProgram</code>，并通过<code>Context</code> 添加到<code>ShaderCache</code> 中。</p> <p>举例：</p> <pre><code class="language-js">new ShaderSource({   sources : [GlobeFS] })  new ShaderProgram({   gl: context._gl,   logShaderCompilation: context.logShaderCompilation,   debugShaders: context.debugShaders,   vertexShaderSource: vertexShaderSource,   vertexShaderText: vertexShaderText,   fragmentShaderSource: fragmentShaderSource,   fragmentShaderText: fragmentShaderText,   attributeLocations: attributeLocations, })</code></pre> <p>但是通常会选择更直接的方式：</p> <pre><code class="language-js">const vertexShaderText = `attribute vec3 position; void main() {   gl_Position = czm_projection * czm_modelView * vec4(position, 1.0); }` const fragmentShaderText = `uniform vec3 color; void main() {   gl_FragColor=vec4( color , 1. ); }`  const program = ShaderProgram.fromCache({   context: context,   vertexShaderSource: vertexShaderText,   fragmentShaderSource: fragmentShaderText,   attributeLocations: attributeLocations })</code></pre> <p>使用<code>ShaderProgram.fromCache</code> 静态方法会自动帮你把着色器缓存到<code>ShaderCache</code> 容器中。</p> <blockquote> <p>着色器代码可以直接使用内置的常量和自动统一值，这是默认会加上去的。</p> </blockquote> <p><code>attributeLocation</code> 是什么？它是一个很普通的 JavaScript 对象：</p> <pre><code class="language-json">{   "position": 0,   "normal": 1,   "st": 2,   "bitangent": 3,   "tangent": 4,   "color": 5 }</code></pre> <p>它指示顶点属性在着色器中的位置。</p> <h2 id="13-构成要素---webgl-的统一值">1.3. 构成要素 - WebGL 的统一值</h2> <p>这个比较简单：</p> <pre><code class="language-js">const uniforms = {   color() {     return Cesium.Color.HONEYDEW    } }</code></pre> <p>使用一个 JavaScript 对象即可，每个成员必须得是<strong>方法</strong>，返回的值符合 Uniform 的要求即可：</p> <ul> <li><code>Cesium.Matrix2/3/4</code> →<code>mat2/3/4</code></li> <li><code>Cesium.Cartesian2/3/4</code> →<code>vec2/3/4</code></li> <li><code>Cesium.Number</code> →<code>float</code></li> <li><code>Cesium.Color</code> →<code>vec4</code></li> <li><code>Cesium.Texture</code> →<code>sampler2D</code></li> <li>...</li> </ul> <p>请查阅<code>Renderer/createUniform.js</code> 中的代码，例如<code>UniformFloatVec3</code> 就可以对应<code>Color</code> 和<code>Cartesian4</code> 等等。</p> <p>这个<code>uniforms</code> 对象最终会在<code>Context</code> 执行绘制时，与系统的自动统一值（<code>AutomaticUniforms</code>）合并。</p> <pre><code class="language-js">Context.prototype.draw = function (/*...*/) {   // ...   continueDraw(this, drawCommand, shaderProgram, uniformMap);   // ... }</code></pre> <h2 id="14-渲染状态对象---renderstate">1.4. 渲染状态对象 - RenderState</h2> <p>渲染状态对象是必须传递给<code>DrawCommand</code> 的。渲染状态对象类型是<code>RenderState</code>，它与<code>ShaderProgram</code> 类似，都提供了静态方法来“缓存式”创建：</p> <pre><code class="language-js">const renderState = RenderState.fromCache({   depthTest: {     enabled: true   } })</code></pre> <p>哪怕什么都不传递：<code>RenderState.fromCache()</code>，内部也会返回一个渲染状态。</p> <p>它传递渲染数据之外一切参与 WebGL 渲染的状态值，在<code>RenderState</code> 中有详细的默认列表参考，上述代码显式指定要进行深度测试。</p> <h2 id="15-其它构成因子">1.5. 其它构成因子</h2> <p>创建绘图指令除了 1.1 ~ 1.3 成分之外，还有其它可选项。</p> <h3 id="-绘制的通道类型---pass">① 绘制的通道类型 - Pass</h3> <p>CesiumJS 不是粗暴地把帧状态对象上的 Command 遍历一遍就绘制了的，在 Scene 的渲染过程中，除了生成三大 Command，还有一步要对 Command 进行通道排序。</p> <p>通道，是一个枚举类型，保存在<code>Pass.js</code> 模块中。不同通道有不同的优先级，譬如在 1.6 中指定的通道是<code>Cesium.Pass.OPAQUE</code>，即不透明通道。在 1.93 版本，通道的顺序为枚举值：</p> <pre><code class="language-js">const Pass = {   ENVIRONMENT: 0,   COMPUTE: 1,   GLOBE: 2,   TERRAIN_CLASSIFICATION: 3,   CESIUM_3D_TILE: 4,   CESIUM_3D_TILE_CLASSIFICATION: 5,   CESIUM_3D_TILE_CLASSIFICATION_IGNORE_SHOW: 6,   OPAQUE: 7,   TRANSLUCENT: 8,   OVERLAY: 9,   NUMBER_OF_PASSES: 10, }</code></pre> <p>可见，<code>OPAQUE</code> （不透明通道）的优先级比<code>TRANSLUCENT</code>（透明通道）高。</p> <p>这个通道与其它图形 API 的通道可能略不一样，因为你只能使用这个值去指定顺序，而不是自己写一个通道来合成渲染（例如 ThreeJS 或 WebGPU）。</p> <h3 id="-绘制的图元类型---webgl-绘制常数">② 绘制的图元类型 - WebGL 绘制常数</h3> <p>即指定<code>VertexArray</code> 中顶点的拓扑格式，在 WebGL 中是通过<code>drawArrays</code> 指定的：</p> <pre><code class="language-js">gl.drawArrays(gl.TRIANGLES, 0, 3)</code></pre> <p>这个<code>gl.TRIANGLES</code> 就是图元类型，是一个常数。Cesium 全部封装在<code>PrimitiveType.js</code> 模块导出的枚举中了：</p> <pre><code class="language-js">console.log(PrimitiveType.TRIANGLES) // 4</code></pre> <p>默认就是<code>PrimitiveType.TRIANGLES</code>，所以在 1.6 代码中我们并不需要传递。</p> <h3 id="-离屏绘制容器---framebuffer">③ 离屏绘制容器 - Framebuffer</h3> <p>CesiumJS 支持把结果画到<code>Renderbuffer</code>，也就是<code>RTR(Render to RenderBuffer)</code> 离屏绘制。绘制到渲染缓冲，是需要帧缓冲容器的，CesiumJS 把 WebGL 1/2 中帧缓冲相关的 API 都封装好了（严格来说，把 WebGL 中的 API 基本都封装了一遍）。</p> <p>本文只简单提一提，关于帧缓冲离屏绘制，以后有机会再介绍，法克鸡丝的博客有比较系统的介绍（虽然比较旧，不过思路还是在的）。</p> <h3 id="-模型坐标变换矩阵---matrix4">④ 模型坐标变换矩阵 - Matrix4</h3> <p>将<code>Matrix4</code> 类型的变量在创建<code>DrawCommand</code> 时传递进去，它最终会传递到 CesiumJS 的内部统一值：<code>czm_model</code>（模型矩阵）上，而无需你在<code>uniform</code> 中指定，你可以在顶点着色器中使用它来对<code>VertexArray</code> 中的顶点进行模型矩阵变换。见 1.6 中的顶点着色器经典的 MVP 相乘。</p> <h3 id="-其它">⑤ 其它</h3> <ul> <li>cull/occlude: 视锥剔除 + 地平线剔除组合技，Boolean</li> <li>orientedBoundingBox/boundingVolume: 范围框</li> <li>count: number，WebGL 绘制时要画多少个点</li> <li>offset: number，WebGL 绘制时从多少偏移量开始用顶点数据</li> <li>instanceCount: number，实例绘制有关</li> <li>castShadows/receiveShadows: Boolean，阴影相关</li> <li>pickId: string，若没定义，在 Pick 通道的绘制中将使用深度数据；若定义了将在 GLSL 中转化为 pick id</li> <li>...</li> </ul> <p>这些都可以在<code>DrawCommand</code> 中找到对应的字段，按需设置即可。</p> <h2 id="16-我们来实践一发纯色三角形">1.6. 我们来实践一发纯色三角形</h2> <p>万事俱备，直接硬搓一个能产生三角形绘制指令的<code>StaticTrianglePrimitive</code>，为了便于在官方沙盒中使用，我给官方 API 加上了命名空间：</p> <pre><code class="language-js">const modelCenter = Cesium.Cartesian3.fromDegrees(112, 23, 0) const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(modelCenter)  const vertexShaderText = `attribute vec3 position; void main() {   gl_Position = czm_projection * czm_view * czm_model * vec4(position, 1.0); }` const fragmentShaderText = `uniform vec3 u_color; void main(){   gl_FragColor = vec4(u_color, 1.0); }`  const createCommand = (frameState, matrix) =&gt; {   const attributeLocations = {     "position": 0,   }   const uniformMap = {     u_color() {       return Cesium.Color.HONEYDEW     },   }   const positionBuffer = Cesium.Buffer.createVertexBuffer({     usage: Cesium.BufferUsage.STATIC_DRAW,     typedArray: new Float32Array([       10000, 50000, 5000,       -20000, -10000, 5000,       50000, -30000, 5000,     ]),     context: frameState.context,   })   const vertexArray = new Cesium.VertexArray({     context: frameState.context,     attributes: [{       index: 0, // 等于 attributeLocations['position']       vertexBuffer: positionBuffer,       componentsPerAttribute: 3,       componentDatatype: Cesium.ComponentDatatype.FLOAT     }]   })   const program = Cesium.ShaderProgram.fromCache({     context: frameState.context,     vertexShaderSource: vertexShaderText,     fragmentShaderSource: fragmentShaderText,     attributeLocations: attributeLocations,   })   const renderState = Cesium.RenderState.fromCache({     depthTest: {       enabled: true     }   })   return new Cesium.DrawCommand({     modelMatrix: matrix,     vertexArray: vertexArray,     shaderProgram: program,     uniformMap: uniformMap,     renderState: renderState,     pass: Cesium.Pass.OPAQUE,   }) }  /* ----- See Here ↓ ------ */  class StaticTrianglePrimitive {   /**    * @param {Matrix4} modelMatrix matrix to WorldCoordinateSystem    */   constructor(modelMatrix) {     this._modelMatrix = modelMatrix   }      /**    * @param {FrameState} frameState    */   update(frameState) {     const command = createCommand(frameState, this._modelMatrix)     frameState.commandList.push(command)   } }  // try! const viewer = new Cesium.Viewer('cesiumContainer', {   contextOptions: {     requestWebgl2: true   } }) viewer.scene.globe.depthTestAgainstTerrain = true viewer.scene.primitives.add(new StaticTrianglePrimitive(modelMatrix))</code></pre> <p>显示出来的效果就是一个白绿色的三角形：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ea83db04793c5b8b60e9bfe117270d0f.jpg" alt="Cesium DrawCommand [1] 不谈地球 画个三角形"></p> <p>图中为大湾区，因为我设的 ENU 坐标中心就是大湾区附近。三角形的高度被我设为了 5000 米。</p> </h1> <p>如果有一个对象或者一个函数，返回的是可绘制的<code>DrawCommand</code>，那么只需把返回的指令对象传递给<code>FrameState</code> 就可以在这一帧把上面的数据和绘图逻辑展示出来。</p> <p>仔细想想，具备创建<code>DrawCommand</code> 的对象其实不少。有<code>Primitive</code>、<code>BillboardCollection</code>、<code>SkyAtmosphere</code>、<code>SkyBox</code>、<code>Sun</code>、<code>Model</code> 等（3DTiles 瓦片上的模型是通过<code>Model</code> 绘制的）。</p> <p>我这里就直接给结论了：</p> <ul> <li>具备创建<code>DrawCommand</code> 功能的，无论是函数，还是对象，都可以直接参与 Cesium 最底层的绘图；</li> <li>原型链上具备<code>update</code> 方法的类，且<code>update</code> 方法接受一个<code>FrameState</code> 对象，并在执行过程中向这个帧状态对象添加<code>DrawCommand</code> 的，就能添加至<code>scene.primitives</code> 这个<code>PrimitiveCollection</code> 中。</li> </ul> <p>前一种有具体的 API，即<code>Globe</code> 下的<code>GlobeSurfaceTileProvider</code>（由<code>QuadtreePrimitive</code> 使用）创建<code>DrawCommand</code>；后面的就多了。</p> <p>能精确控制<code>DrawCommand</code>，就可以在 Cesium 场景中做你想做的绘图。</p> <h2 id="点到为止">点到为止</h2> <p><code>DrawCommand</code> 是 CesiumJS 渲染器之前的最后一道数据封装，后面就是对这些指令对象上的资源进行分发、绑定、执行。读者有兴趣的话，还可以自行研究<code>ClearCommand</code> 和<code>ComputeCommand</code>，也许以后会写写，不过本篇点到为止~</p> </h1> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/fuckgiser/p/6002210.html"  target="_blank" rel="nofollow">博客园 - 法克鸡丝 - Cesium原理篇：6 Render模块(5: VAO&amp;RenderState&amp;Command)</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/453880906"  target="_blank" rel="nofollow">知乎 - 三维网格 - Cesium 高性能扩展之DrawCommand（一）：入门</a></li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-30585.htm">如何在 C# 循环中捕获局部变量？</a></p>
+                                        <p>下一个：<a href="/news/article-31071.htm">动物医院办理条件是什么要求的（动物医院办理条件是什么要求的呢）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-subscribe-node.htm" title="ShadowsocksR Node节点订阅每天更新20.7M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新20.7M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新21.6M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-node-share.htm" title="ShadowsocksR Node节点订阅每天更新20.7M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新20.7M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44677.htm" title="正确计算linux系统内存使用率">正确计算linux系统内存使用率</a></li>
+                        <li class="py-2"><a href="/news/article-31432.htm" title="动物打疫苗需要多少钱一次打（动物打疫苗需要多少钱一次打完）">动物打疫苗需要多少钱一次打（动物打疫苗需要多少钱一次打完）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新21.5M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-40717.htm" title="成都动物免疫中心（成都动物疫苗接种点）">成都动物免疫中心（成都动物疫苗接种点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-subscribe-node.htm" title="ShadowsocksR Node节点订阅每天更新19.5M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新19.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36304.htm" title="宠物领养证如何办理流程图片及价格大全（宠物领养证书怎么办理）">宠物领养证如何办理流程图片及价格大全（宠物领养证书怎么办理）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

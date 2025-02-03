@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-33406.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spring动态代理中有什么方法不会被代理探究</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="JDK代理中  会代理对象中的所有方法，对于Object中继承的方法，会代理toString方法，但是不会代理equals，hashCode，getClass方法。  原因在于在Spring中的Jdk" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-33406.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="Spring动态代理中有什么方法不会被代理探究" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/8713192ed42b271e3a440030564020b4.webp" />
+        <meta property="og:release_date" content="2024-12-30T09:02:47" />
+    <meta property="og:updated_time" content="2024-12-30T09:02:47" />
+        <meta property="og:description" content="JDK代理中  会代理对象中的所有方法，对于Object中继承的方法，会代理toString方法，但是不会代理equals，hashCode，getClass方法。  原因在于在Spring中的Jdk" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring动态代理中有什么方法不会被代理探究">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>Spring动态代理中有什么方法不会被代理探究</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>JDK代理中 <br /> 会代理对象中的所有方法，对于Object中继承的方法，会代理toString方法，但是不会代理equals，hashCode，getClass方法。 <br /> 原因在于在Spring中的JdkDynamicAopProxy类中的invoke方法执行时会判断</p> <pre class="prettyprint"><code class="hljs oxygene"> <span class="hljs-keyword">if</span> ((!this.equalsDefined) &amp;&amp; (AopUtils.isEqualsMethod(<span class="hljs-function"><span class="hljs-keyword">method</span>)))       <span class="hljs-comment">{         return Boolean.valueOf(equals(args[0]));       }</span>       <span class="hljs-title">if</span> <span class="hljs-params">((!this.hashCodeDefined)</span> &amp;&amp; <span class="hljs-params">(AopUtils.isHashCodeMethod(<span class="hljs-keyword">method</span>)</span>))       <span class="hljs-comment">{         return Integer.valueOf(hashCode());       }</span>       <span class="hljs-title">if</span> <span class="hljs-params">((!this.advised.opaque)</span> &amp;&amp; <span class="hljs-params">(<span class="hljs-keyword">method</span>.getDeclaringClass()</span>.<span class="hljs-title">isInterface</span><span class="hljs-params">()</span>) &amp;&amp;          <span class="hljs-params">(<span class="hljs-keyword">method</span>         .getDeclaringClass()</span>.<span class="hljs-title">isAssignableFrom</span><span class="hljs-params">(Advised.<span class="hljs-keyword">class</span>)</span>))       <span class="hljs-comment">{         return AopUtils.invokeJoinpointUsingReflection(this.advised, method, args);       }</span></span></code></pre> <p>所以在调用这三个方法时并不会被代理。</p> <p>CGLIB代理 <br /> 与JDK类似，都会进行方法判断，但是该代理的运行方式还不理解，判断方法在本类中并没有使用。应该是在别的类中调用，并根据返回值判断是否代理</p> <pre class="prettyprint"><code class="hljs oxygene"> <span class="hljs-keyword">if</span> (AopUtils.isFinalizeMethod(<span class="hljs-function"><span class="hljs-keyword">method</span>)) <span class="hljs-comment">{         CglibAopProxy.logger.debug("Found finalize() method - using NO_OVERRIDE");         return 2;       }</span>       <span class="hljs-title">if</span> <span class="hljs-params">((!this.advised.isOpaque()</span>) &amp;&amp; <span class="hljs-params">(<span class="hljs-keyword">method</span>.getDeclaringClass()</span>.<span class="hljs-title">isInterface</span><span class="hljs-params">()</span>) &amp;&amp;          <span class="hljs-params">(<span class="hljs-keyword">method</span>         .getDeclaringClass()</span>.<span class="hljs-title">isAssignableFrom</span><span class="hljs-params">(Advised.<span class="hljs-keyword">class</span>)</span>)) <span class="hljs-comment">{         if (CglibAopProxy.logger.isDebugEnabled()) {           CglibAopProxy.logger.debug("Method is declared on Advised interface: " + method);         }</span>         <span class="hljs-title">return</span> 4;</span>       }        <span class="hljs-keyword">if</span> (AopUtils.isEqualsMethod(<span class="hljs-function"><span class="hljs-keyword">method</span>)) <span class="hljs-comment">{         CglibAopProxy.logger.debug("Found 'equals' method: " + method);         return 5;       }</span>        <span class="hljs-title">if</span> <span class="hljs-params">(AopUtils.isHashCodeMethod(<span class="hljs-keyword">method</span>)</span>) <span class="hljs-comment">{         CglibAopProxy.logger.debug("Found 'hashCode' method: " + method);         return 6;</span></span></code></pre> <p>还有很多不理解，以后如果有更深理解，会更新的</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-32968.htm">农大动物医院预约挂号（农业大学动物医院门诊时间）</a></p>
+                                        <p>下一个：<a href="/news/article-33408.htm">全国宠物粮食基地在哪里啊（中国宠物粮厂家批发网）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-24447.htm" title="基于Apache Hudi在Google云构建数据湖平台">基于Apache Hudi在Google云构建数据湖平台</a></li>
+                        <li class="py-2"><a href="/news/article-24982.htm" title="动物疫苗的类型包括（动物疫苗的种类和制备原理）">动物疫苗的类型包括（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-subscribe-node.htm" title="ShadowsocksR Node节点订阅每天更新20M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新20M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-high-speed-nodes.htm" title="ShadowsocksR Node节点订阅每天更新21M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36783.htm" title="同安宠物救助（同安宠物领养中心）">同安宠物救助（同安宠物领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-34389.htm" title="动物疫苗有效期多久啊（动物疫苗有效期多久啊多少钱）">动物疫苗有效期多久啊（动物疫苗有效期多久啊多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-22671.htm" title="PostMan传参给@RequestBody（接受前端参数）的方式">PostMan传参给@RequestBody（接受前端参数）的方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-high-speed-nodes.htm" title="ShadowsocksR Node节点订阅每天更新21.1M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20380.htm" title="养一只猫需要打什么针好（养一只猫要打疫苗吗,多少钱）">养一只猫需要打什么针好（养一只猫要打疫苗吗,多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

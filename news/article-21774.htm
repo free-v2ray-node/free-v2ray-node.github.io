@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-21774.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpringMVC获取请求参数笔记整理_java_</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="目录  前言 一、使用ServletAPI获取参数 二、通过控制器方法的形参获取请求参数 三、@RequestParam 四、@RequestHeader 五、@CookieValue 六、通过实体类" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-21774.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="SpringMVC获取请求参数笔记整理_java_" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/e5901148c22f909c974791294e1b76e5.webp" />
+        <meta property="og:release_date" content="2024-12-05T10:07:16" />
+    <meta property="og:updated_time" content="2024-12-05T10:07:16" />
+        <meta property="og:description" content="目录  前言 一、使用ServletAPI获取参数 二、通过控制器方法的形参获取请求参数 三、@RequestParam 四、@RequestHeader 五、@CookieValue 六、通过实体类" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringMVC获取请求参数笔记整理_java_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>SpringMVC获取请求参数笔记整理_java_</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">前言</a></li> <li><a href="#_label1" rel="nofollow">一、使用ServletAPI获取参数</a></li> <li><a href="#_label2" rel="nofollow">二、通过控制器方法的形参获取请求参数</a></li> <li><a href="#_label3" rel="nofollow">三、@RequestParam</a></li> <li><a href="#_label4" rel="nofollow">四、@RequestHeader</a></li> <li><a href="#_label5" rel="nofollow">五、@CookieValue</a></li> <li><a href="#_label6" rel="nofollow">六、通过实体类的形参获取参数</a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>前言</h2> <p>本篇文章目的是为了<code>学习、记录和分享</code>博主在学习 <code>Spring MVC</code>过程中的笔记。同时也希望本篇文章能够帮助屏幕前的你！</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>一、使用ServletAPI获取参数</h2> <p>通过 <strong>HttpServletRequest</strong> 当作形参，此时 <strong>HttpServletRequest</strong> 类型的参数表示封装了当前请求的请求报文的对象。</p> <p>测试案例：</p> <div class="ay1code"> <pre class="brush:java;"> @RequestMapping("/testParam")      public String testParam(HttpServletRequest request){          String username = request.getParameter("username");          String password = request.getParameter("password");          System.out.println("username:"+username+",password:"+password);          return "success";      }</pre> </div> <div class="ay1code"> <pre class="brush:java;">&lt;form method="get" action="/SpringMVC/testParam"&gt;      username: &lt;input  type="text"   name="username"/&gt;      password: &lt;input  type="password"   name="password"/&gt;      &lt;input type="submit" value="Submit" /&gt;  &lt;/form&gt;  </pre> </div> <p>运行结果：</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220413/8820f3cdb01f9f5ebeb4f4ccb8128306.jpg"></p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>二、通过控制器方法的形参获取请求参数</h2> <p>在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 <strong>DispatcherServlet</strong> 中就会将请求参数赋值给相应的形参。</p> <p>测试用例：</p> <div class="ay1code"> <pre class="brush:java;">    @RequestMapping("/testParam")      public String testParam(String username,String password){          System.out.println("username:"+username+",password:"+password);          return "success";      }</pre> </div> <div class="ay1code"> <pre class="brush:java;">&lt;form method="get" action="/SpringMVC/testParam"&gt;      username: &lt;input  type="text"   name="username"/&gt;      password: &lt;input  type="password"   name="password"/&gt;      &lt;input type="submit" value="Submit" /&gt;  &lt;/form&gt;  </pre> </div> <p>运行结果：</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220413/4fee52281a0c677acab2b6399d536b3b.jpg"></p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>三、@RequestParam</h2> <p>@RequestParam是将<code>请求参数</code>和<code>控制器方法的形参</code>创建映射关系！</p> <p>OK，我们可以来看一下 @<strong>RequestParam</strong> 的源码部分：</p> <div class="ay1code"> <pre class="brush:java;">@Target({ElementType.PARAMETER})  @Retention(RetentionPolicy.RUNTIME)  @Documented  public @interface RequestParam {      //别名name，一般默认为空      @AliasFor("name")      String value() default "";  	//指定为形参赋值的请求参数的参数名      @AliasFor("value")      String name() default "";  	//设置是否必须传输此请求参数，默认值为true      boolean required() default true;  	//用来定义默认值      String defaultValue() default "\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n";  }  </pre> </div> <p>注：</p> <p>若<code>required</code>设置为<code>true</code>时，则当前请求必须传输<code>value</code>所指定的请求参数，若没有传输该请求参数，且没有设置<code>defaultValue</code>属性，则页面报错 <strong>400：Required String parameter ‘xxx’ is not present；</strong> 若设置为<code>false</code>，则当前请求不是必须传输<code>value</code>所指定的请求参数，若没有传输，则注解所标识的形参的值为<code>null</code>。</p> <div class="ay1code"> <pre class="brush:java;">    @RequestMapping(value = "/testParam", method = RequestMethod.POST)      public String testParam(@RequestParam(value = "user_name",required = false,defaultValue = "gg") String name,                              @RequestParam(value = "password",required = true,defaultValue = "hh") String pwd,                              String[] hobby) {            System.out.println(name + pwd + Arrays.toString(hobby));          return "success";      }  </pre> </div> <div class="ay1code"> <pre class="brush:java;">&lt;form th:action="@{/testParam}" method="post"&gt;      用户名：&lt;input type="name" name = "user_name"&gt;&lt;br&gt;      密码：&lt;input type="password" name = "password"&gt;&lt;br&gt;      爱好：&lt;input type="checkbox" name = "hobby" value="a"&gt;a      &lt;input type="checkbox" name = "hobby" value="b"&gt;b      &lt;input type="checkbox" name = "hobby" value="c"&gt;c&lt;br&gt;      &lt;input type="submit" value="测试"&gt;  &lt;/form&gt;  </pre> </div> <p><strong>运行结果：</strong></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220413/acb85e472a3e01b5a05637db4699a9cd.jpg"></p> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>四、@RequestHeader</h2> <p><code>@RequestHeader</code>是将请求头信息和控制器方法的形参创建映射关系。</p> <p><code>@RequestHeader</code>注解一共有三个属性：value、required、defaultValue，用法同<code>@RequestParam</code>。</p> <div class="ay1code"> <pre class="brush:java;">@RequestMapping(value = "/testParam2",method = RequestMethod.POST)  //形参位置的request表示当前请求  public String testParam2(@RequestParam("username") String name,                           @RequestParam("password") String pwd,                           String[] hobby,                           @RequestHeader("Host") String host){      System.out.println(name+pwd+ Arrays.toString(hobby));      System.out.println("Host:"+host);//输出结果Host:localhost:8080      return "success";  }</pre> </div> <p class="maodian"><a name="_label5" rel="nofollow"></a></p> <h2>五、@CookieValue</h2> <p><code>@CookieValue</code>是将<code>cookie</code>数据和控制器方法的形参创建映射关系</p> <p><code>@CookieValue</code>注解一共有三个属性：value、required、defaultValue，用法同<code>@RequestParam</code></p> <div class="ay1code"> <pre class="brush:java;">@CookieValue("JSESSIONID") String JSESSIONID  </pre> </div> <div class="ay1code"> <pre class="brush:java;">@Controller  @RequestMapping("hello")  public class HelloController2 {      @RequestMapping("show25")      public String test25(Model model, @CookieValue("JSESSIONID")String jsessionid){          model.addAttribute("msg", "获取cookie,jsessionid:" + jsessionid);          return "hello2";      }  }</pre> </div> <p class="maodian"><a name="_label6" rel="nofollow"></a></p> <h2>六、通过实体类的形参获取参数</h2> <p>首先需要创建一个实体类 <strong>User</strong></p> <div class="ay1code"> <pre class="brush:java;">package xiaobao.mvc.bean;  public class User {      private Integer id;      private String username;      private String password;      private Integer age;      private String sex;      private String email;      public Integer getId() {          return id;      }      public void setId(Integer id) {          this.id = id;      public String getUsername() {          return username;      public void setUsername(String username) {          this.username = username;      public String getPassword() {          return password;      public void setPassword(String password) {          this.password = password;      public Integer getAge() {          return age;      public void setAge(Integer age) {          this.age = age;      public String getSex() {          return sex;      public void setSex(String sex) {          this.sex = sex;      public String getEmail() {          return email;      public void setEmail(String email) {          this.email = email;      @Override      public String toString() {          return "User{" +                  "id=" + id +                  ", username='" + username + '\'' +                  ", password='" + password + '\'' +                  ", age=" + age +                  ", sex='" + sex + '\'' +                  ", email='" + email + '\'' +                  '}';  }  </pre> </div> <p>然后前端：</p> <div class="ay1code"> <pre class="brush:js;">&lt;form th:action="@{/testpojo}" method="post"&gt;      用户名：&lt;input type="text" name="username"&gt;&lt;br&gt;      密码：&lt;input type="password" name="password"&gt;&lt;br&gt;      性别：&lt;input type="radio" name="sex" value="男"&gt;男&lt;input type="radio" name="sex" value="女"&gt;女&lt;br&gt;      年龄：&lt;input type="text" name="age"&gt;&lt;br&gt;      邮箱：&lt;input type="text" name="email"&gt;&lt;br&gt;      &lt;input type="submit"&gt;  &lt;/form&gt;  </pre> </div> <p>后端：</p> <div class="ay1code"> <pre class="brush:java;">@RequestMapping("/testpojo")  public String testPOJO(User user){      System.out.println(user);      return "success";  }  </pre> </div> <p>运行结果：</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220413/78c0fa6899105bef1603df908c2ac84c.jpg"></p> <p>因为我还没没有解决乱码，所以这个就一直乱码问题，等到后面我专门出一期这个文章来解决乱码的问题！</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-21773.htm">restFul风格传参, 参数中带斜杠/问题</a></p>
+                                        <p>下一个：<a href="/news/article-22208.htm">spring boot@EnableXXXX注解编程模型分析</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-45194.htm" title="宠物粮食加工厂需要投资多少钱一个月呢英语翻译（宠物粮加工设备）">宠物粮食加工厂需要投资多少钱一个月呢英语翻译（宠物粮加工设备）</a></li>
+                        <li class="py-2"><a href="/news/article-24041.htm" title="新手开宠物店需要了解哪些知识（新手开宠物店需要会什么）">新手开宠物店需要了解哪些知识（新手开宠物店需要会什么）</a></li>
+                        <li class="py-2"><a href="/news/article-43712.htm" title="SpringCloud Feign整合Sentinel">SpringCloud Feign整合Sentinel</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新19.3M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新19.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37268.htm" title="springboot项目 Feign调用时，@RequestBody 接受字符串(String),json字符串多出引号">springboot项目 Feign调用时，@RequestBody 接受字符串(String),json字符串多出引号</a></li>
+                        <li class="py-2"><a href="/news/article-18987.htm" title="宠物粮行业分析论文题目怎么写的（宠物粮行业环境分析）">宠物粮行业分析论文题目怎么写的（宠物粮行业环境分析）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-node-share.htm" title="ShadowsocksR Node节点订阅每天更新19.6M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新19.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-node-subscribe.htm" title="ShadowsocksR Node节点订阅每天更新19.2M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新19.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-41217.htm" title="一家宠物店每月给购买猫粮5kg以上的顾客（宠物店一个月卖几只）">一家宠物店每月给购买猫粮5kg以上的顾客（宠物店一个月卖几只）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新21.5M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.5M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

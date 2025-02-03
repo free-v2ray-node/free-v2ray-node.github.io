@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-28239.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linux上部署net6应用</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="前言 	.net6都出来了，作为一名.net搬砖工却一直都在windows下部署应用，还未尝试过linux环境下部署应用。参考福禄网络研发团队的相关博客，学习一下如何将应用部署到linux系统。  ." />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-28239.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="Linux上部署net6应用" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/62ccace703f50757337497ff3761f29e.webp" />
+        <meta property="og:release_date" content="2024-12-19T09:56:07" />
+    <meta property="og:updated_time" content="2024-12-19T09:56:07" />
+        <meta property="og:description" content="前言 	.net6都出来了，作为一名.net搬砖工却一直都在windows下部署应用，还未尝试过linux环境下部署应用。参考福禄网络研发团队的相关博客，学习一下如何将应用部署到linux系统。  ." />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Linux上部署net6应用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>Linux上部署net6应用</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<h3 id="前言">前言</h3> <p>	.net6都出来了，作为一名.net搬砖工却一直都在windows下部署应用，还未尝试过linux环境下部署应用。参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://home.cnblogs.com/u/fulu/"  target="_blank" rel="nofollow">福禄网络研发团队</a>的相关博客，学习一下如何将应用部署到linux系统。</p> <blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/fulu/p/13983734.html"  target="_blank" rel="nofollow">.NET5都来了，你还不知道怎么部署到linux？最全部署方案，总有一款适合你 - 福禄网络研发团队 - 博客园 (cnblogs.com)</a></p> </blockquote> <h3 id="一准备">一、准备</h3> <p>云服务器：腾讯云（便宜）</p> <p>操作系统：CentOS 8.2</p> <p>SSH 客户端：PuTTY （免费且开源）</p> <p>SFTP工具：WinSCP（免费且开源）</p> <h3 id="二安装sdk">二、安装Sdk</h3> <p>打开PuTTy，登录云服务器，输入账户密码</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bf7eee051e57a51d01f8dcd300ad2bb0.jpg" alt="Linux上部署net6应用"></p> <p>在linux上先安装sdk</p> <p>参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/dotnet/core/install/linux-centos"  target="_blank" rel="nofollow">在 CentOS 上安装 .NET - .NET | Microsoft Docs</a></p> <p>指令：</p> <pre><code>sudo yum install -y dotnet-sdk-6.0</code></pre> <p>安装成功后，查看是否安装成功</p> <pre><code>dotnet --version</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/82201fd5d1ba84727d097a553b95b1e8.jpg" alt="Linux上部署net6应用"></p> <h3 id="三创建和发布web应用">三、创建和发布Web应用</h3> <p>创建web应用：</p> <pre><code>dotnet new webapp -o test</code></pre> <p>输入cd test，进入应用目录，输入运行命令：dotnet run</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bdad3ac67b99889208eb6336300616da.jpg" alt="Linux上部署net6应用"></p> <p><strong>运行成功，这个时候我们用外网ip访问时无法访问的</strong>。</p> <p>用WinScp打开目录/root/test/Properties，编辑launchSettings.json，将applicationUrl的localhost改为*</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7fb18ea97c2f85763bccaae1a0e4c706.jpg" alt="Linux上部署net6应用"></p> <p>修改好后我们再用dotnet run 运行一次，用外网ip访问正常</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/821acda26b334c3c2747fb0bda3c43c1.jpg" alt="Linux上部署net6应用"></p> <p>web程序没问题后，我们用命令发布</p> <pre><code>dotnet publish</code></pre> <h3 id="四安装和配置supervisor">四、安装和配置Supervisor</h3> <p>外网访问无问题以后，安装Supervisor。Supervisor是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。</p> <p>安装Supervisor:</p> <pre><code>yum install -y supervisor</code></pre> <p>安装成功后，分别执行以下命令</p> <pre><code>systemctl enable supervisord</code></pre> <pre><code>systemctl start supervisord</code></pre> <p>查看状态</p> <pre><code>systemctl status supervisord</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0e005d2fd2e9383cb3529a267dd05de6.jpg" alt="Linux上部署net6应用"></p> <p>使用vi编辑/etc/conf.d，结果如下图（<strong>一定要一样</strong>）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/674188d642d924232bdff0405daa8498.jpg" alt="Linux上部署net6应用"></p> <p>重新加载配置文件：</p> <pre><code>supervisorctl reload</code></pre> <p>打开IP：9001，输入用户密码:user/123</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5a2ea8ee0c8674bf32dd8acbbd4d874a.jpg" alt="Linux上部署net6应用"></p> <p>supervisor安装配置完成后，开始配置一个ini文件：</p> <pre><code class="language-json">[program:test] ;表示程序名称，用于在supervisor中显示，无特殊意义。 command=/bin/bash -c "dotnet test.dll --urls http://*:5001" ; 输入执行命令，这里表示执行的是dotnet test.dll directory=/root/test/bin/Debug/net6.0/publish/ ; 应用程序根目录  autostart=true ; 是否自动启动，当 supervisor 加载该配置文件的时候立即启动它  autorestart=true ; 是否自动重启， 程序异常退出后自动重启 logfile_maxbytes=50MB ; 该配置文件输出单个日志文件的大小，默认50M logfile_backups=10 ; 日志备份个数  loglevel=info ; 记录日志级别  stdout_logfile=/root/data/logs/test/test.out.log ; 指定标准输出日志文件  environment=ASPNETCORE_ENVIRONMENT=Production ;环境变量。 user=root ;启动服务的用户   redirect_stderr=true ;把 stderr 重定向到 stdout，默认 false</code></pre> <p>主要配置</p> <p>command： 执行命令</p> <p>directory：应用程序所在目录</p> <p>stdout_logfile：日志文件所在路径，非常注意：<strong>请一定先要创建好路径</strong>，可用命令</p> <pre><code>mkdir -p /root/data/logs/test</code></pre> <p>上列ini可直接复制使用，但须注意：<strong>';'前一定一定要有个空格</strong>，否则会报错。（踩坑）</p> <p>在本地配置好这个文件后，将其放到/etc/supervisord.d这个目录下</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2d037099d11874a078ada9fa559ec120.jpg" alt="Linux上部署net6应用"></p> <p>重新加载：</p> <pre><code>supervisorctl reload</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a2205c6fe2b129c506cb614c0e595959.jpg" alt="Linux上部署net6应用"></p> <p>这时可以看到配置的应用已经运行起来了</p> <h3 id="五nginx">五、Nginx</h3> <p>安装Nginx</p> <pre><code> yum install -y nginx</code></pre> <p>依次执行以下命令：</p> <pre><code>systemctl enable nginx</code></pre> <pre><code>systemctl start nginx</code></pre> <p>浏览器访问ip：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/53863dd0152ae3c8d502134792857a01.jpg" alt="Linux上部署net6应用"></p> <p>配置文件位置：/etc/nginx/nginx.conf，找到location节点，输入proxy_pass<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://0.0.0.0:5001"  target="_blank" rel="nofollow">http://0.0.0.0:5001</a>;</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2629bb58c104359b0eab54c0ec799baf.jpg" alt="Linux上部署net6应用"></p> <p>重新加载配置：</p> <pre><code>nginx -s reload</code></pre> <p>直接用ip访问成功，如果有绑定域名，也可直接用域名访问</p> <p>至此，所有配置就都完成啦~~</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28237.htm">面向对象的7种设计原则(2)-接口隔离原则</a></p>
+                                        <p>下一个：<a href="/news/article-28692.htm">违约养宠物还能退押金吗 违约养宠物还能退押金吗知乎</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31071.htm" title="动物医院办理条件是什么要求的（动物医院办理条件是什么要求的呢）">动物医院办理条件是什么要求的（动物医院办理条件是什么要求的呢）</a></li>
+                        <li class="py-2"><a href="/news/article-35227.htm" title="塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）">塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）</a></li>
+                        <li class="py-2"><a href="/news/article-19924.htm" title="欧式沙发靠垫怎么搭配(欧式沙发靠背垫图片)">欧式沙发靠垫怎么搭配(欧式沙发靠背垫图片)</a></li>
+                        <li class="py-2"><a href="/news/article-20837.htm" title="动物疫苗行业排名前十名有哪些企业（动物疫苗企业名单）">动物疫苗行业排名前十名有哪些企业（动物疫苗企业名单）</a></li>
+                        <li class="py-2"><a href="/news/article-32010.htm" title="Java 垃圾回收超详细讲解记忆集和卡表_java">Java 垃圾回收超详细讲解记忆集和卡表_java</a></li>
+                        <li class="py-2"><a href="/news/article-41710.htm" title="被猫抓伤渗了一点点血需要打疫苗吗（被猫抓伤渗了一点点血要打破伤风吗）">被猫抓伤渗了一点点血需要打疫苗吗（被猫抓伤渗了一点点血要打破伤风吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新22.3M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新22.3M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新22.2M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新22.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35767.htm" title="宠物狗批发基地（宠物犬批发基地）">宠物狗批发基地（宠物犬批发基地）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新19.1M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新19.1M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-35226.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="先来几个简单的示例 Solution 1:&nbsp; 1列 update student s, city c set s.city_name = c.name where s.city_code =" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-35226.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/6dde879298ab362ce9c19b5c4fa70dc6.webp" />
+        <meta property="og:release_date" content="2025-01-03T00:25:27" />
+    <meta property="og:updated_time" content="2025-01-03T00:25:27" />
+        <meta property="og:description" content="先来几个简单的示例 Solution 1:&nbsp; 1列 update student s, city c set s.city_name = c.name where s.city_code =" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>先来几个简单的示例</p> <p>Solution 1:&nbsp; 1列</p> <p>update student s, city c</p> <p>set s.city_name = c.name</p> <p>where s.city_code = c.code;</p> <p>Solution 2:&nbsp; 多个列</p> <p>update a, b</p> <p>set a.title=b.title, a.name=b.name</p> <p>where a.id=b.id</p> <p>Solution 3: 子查询</p> <p>update student s set city_name = (select name from city where code = s.city_code);</p> <p>我们再来看几个负责写的</p> <p>例如: 把表 tk_zyt_scenery_order的 字段更新到 t_advs_order中去, 一般可能会这样写:</p> <p>UPDATE t_advs_order SET</p> <p>attribute1=(SELECT o.order_state FROM tk_zyt_scenery_order o WHERE o.order_id=`on`),</p> <p>attribute2=(SELECT o.order_state FROM tk_zyt_scenery_order o WHERE o.order_id=`on`)</p> <p>WHERE EXISTS (SELECT o.order_state FROM tk_zyt_scenery_order o WHERE o.order_id=`on`);</p> <p>这样效率比较低下, 优化写法:</p> <p>UPDATE t_advs_order a INNER JOIN tk_zyt_scenery_order s ON s.order_id=a.`on` SET</p> <p>a.attribute1=s.order_id,</p> <p>a.attribute2=s.order_id;</p> <p>您可能感兴趣的文章:mysql把一个表某个字段的内容复制到另一张表的某个字段的SQL语句写法Mysql两种情况下更新字段中部分数据的方法MySQL数据表字段内容的批量修改、清空、复制等更新命令MySql中把一个表的数据插入到另一个表中的实现代码mysql更新一个表里的字段等于另一个表某字段的值实例</p> </div> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34865.htm">成都免费领养狗狗的地方 成都免费领养狗狗的地方在哪里</a></p>
+                                        <p>下一个：<a href="/news/article-35227.htm">塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-high-speed-nodes.htm" title="ShadowsocksR Node节点订阅每天更新20.9M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新20.9M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新23M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31071.htm" title="动物医院办理条件是什么要求的（动物医院办理条件是什么要求的呢）">动物医院办理条件是什么要求的（动物医院办理条件是什么要求的呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share.htm" title="ShadowsocksR Node节点订阅每天更新21.8M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27764.htm" title="动物疫苗证书怎么考（动物疫苗证在哪里办）">动物疫苗证书怎么考（动物疫苗证在哪里办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新22.3M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新22.3M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-node-subscribe.htm" title="ShadowsocksR Node节点订阅每天更新19.9M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新19.9M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33919.htm" title="动物打疫苗过敏症状有哪些（动物打了疫苗有什么用）">动物打疫苗过敏症状有哪些（动物打了疫苗有什么用）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新21.6M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.6M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

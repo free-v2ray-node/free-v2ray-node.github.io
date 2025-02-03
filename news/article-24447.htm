@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-24447.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>基于Apache Hudi在Google云构建数据湖平台</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="自从计算机出现以来，我们一直在尝试寻找计算机存储一些信息的方法，存储在计算机上的信息（也称为数据）有多种形式，数据变得如此重要，以至于信息现在已成为触手可及的商品。多年来数据以多种方式存储在计算机中，" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-24447.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="基于Apache Hudi在Google云构建数据湖平台" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/62ccace703f50757337497ff3761f29e.webp" />
+        <meta property="og:release_date" content="2024-12-11T09:54:29" />
+    <meta property="og:updated_time" content="2024-12-11T09:54:29" />
+        <meta property="og:description" content="自从计算机出现以来，我们一直在尝试寻找计算机存储一些信息的方法，存储在计算机上的信息（也称为数据）有多种形式，数据变得如此重要，以至于信息现在已成为触手可及的商品。多年来数据以多种方式存储在计算机中，" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="基于Apache Hudi在Google云构建数据湖平台">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>基于Apache Hudi在Google云构建数据湖平台</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>自从计算机出现以来，我们一直在尝试寻找计算机存储一些信息的方法，存储在计算机上的信息（也称为数据）有多种形式，数据变得如此重要，以至于信息现在已成为触手可及的商品。多年来数据以多种方式存储在计算机中，包括数据库、blob存储和其他方法，为了进行有效的业务分析，必须对现代应用程序创建的数据进行处理和分析，并且产生的数据量非常巨大！有效地存储数PB数据并拥有必要的工具来查询它以便使用它至关重要，只有这样对该数据的分析才能产生有意义的结果。<br /> 大数据是一门处理分析方法、有条不紊地从中提取信息或以其他方式处理对于典型数据处理应用程序软件而言过于庞大或复杂的数据量的方法的学科。为了处理现代应用程序产生的数据，大数据的应用是非常必要的，考虑到这一点，本博客旨在提供一个关于如何创建数据湖的小教程，该数据湖从应用程序的数据库中读取任何更改并将其写入数据湖中的相关位置，我们将为此使用的工具如下：</p> <ul> <li>Debezium</li> <li>MySQL</li> <li>Apache Kafka</li> <li>Apache Hudi</li> <li>Apache Spark</li> </ul> <p>我们将要构建的数据湖架构如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5883cccf717db2c3df22c29cb5dd671a.jpg" alt="基于Apache Hudi在Google云构建数据湖平台"></p> <p>第一步是使用 Debezium 读取关系数据库中发生的所有更改，并将所有更改推送到 Kafka 集群。</p> <p>Debezium 是一个用于变更数据捕获的开源分布式平台，Debezium 可以指向任何关系数据库，并且它可以开始实时捕获任何数据更改，它非常快速且实用，由红帽维护。</p> <p>首先，我们将使用 docker-compose 在我们的机器上设置 Debezium、MySQL 和 Kafka，您也可以使用这些的独立安装，我们将使用 Debezium 提供给我们的 mysql 镜像，因为其中已经包含数据，在任何生产环境中都可以使用适当的 Kafka、MySQL 和 Debezium 集群，docker compose 文件如下：</p> <pre><code class="language-yaml">version: '2' services:   zookeeper:     image: debezium/zookeeper:${DEBEZIUM_VERSION}     ports:      - 2181:2181      - 2888:2888      - 3888:3888   kafka:     image: debezium/kafka:${DEBEZIUM_VERSION}     ports:      - 9092:9092     links:      - zookeeper     environment:      - ZOOKEEPER_CONNECT=zookeeper:2181   mysql:     image: debezium/example-mysql:${DEBEZIUM_VERSION}     ports:      - 3307:3306     environment:      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASS}      - MYSQL_USER=${MYSQL_USER}      - MYSQL_PASSWORD=${MYSQL_USER_PASS}   schema-registry:     image: confluentinc/cp-schema-registry     ports:      - 8181:8181      - 8081:8081     environment:      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:9092      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181      - SCHEMA_REGISTRY_HOST_NAME=schema-registry      - SCHEMA_REGISTRY_LISTENERS=http://schema-registry:8081     links:      - zookeeper   connect:     image: debezium/connect:${DEBEZIUM_VERSION}     ports:      - 8083:8083     links:      - kafka      - mysql      - schema-registry     environment:      - BOOTSTRAP_SERVERS=kafka:9092      - GROUP_ID=1      - CONFIG_STORAGE_TOPIC=my_connect_configs      - OFFSET_STORAGE_TOPIC=my_connect_offsets      - STATUS_STORAGE_TOPIC=my_connect_statuses      - KEY_CONVERTER=io.confluent.connect.avro.AvroConverter      - VALUE_CONVERTER=io.confluent.connect.avro.AvroConverter      - INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter      - INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter      - CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081      - CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081</code></pre> <p>DEBEZIUM_VERSION 可以设置为 1.8。 此外请确保设置 MYSQL_ROOT_PASS、MYSQL_USER 和 MYSQL_PASSWORD。</p> <p>在我们继续之前，我们将查看 debezium 镜像提供给我们的数据库 inventory 的结构，进入数据库的命令行：</p> <pre><code class="language-shell">docker-compose -f docker-compose-avro-mysql.yaml exec mysql bash -c 'mysql -u $MYSQL_USER -p$MYSQL_PASSWORD inventory'</code></pre> <p>在 shell 内部，我们可以使用 show tables 命令。 输出应该是这样的：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/3d85fcc79e2f23fc86c4a720d70e05a7.jpg" alt="基于Apache Hudi在Google云构建数据湖平台"></p> <p>我们可以通过 select * from customers 命令来查看客户表的内容。 输出应该是这样的：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6b73b5154f872f9d746a3be5048005bb.jpg" alt="基于Apache Hudi在Google云构建数据湖平台"></p> <p>现在在创建容器后，我们将能够为 Kafka Connect 激活 Debezium 源连接器，我们将使用的数据格式是 Avro 数据格式，Avro 是在 Apache 的 Hadoop 项目中开发的面向行的远程过程调用和数据序列化框架。它使用 JSON 来定义数据类型和协议，并以紧凑的二进制格式序列化数据。</p> <p>让我们用我们的 Debezium 连接器的配置创建另一个文件。</p> <pre><code class="language-yaml">{     "name": "inventory-connector",     "config": {         "connector.class": "io.debezium.connector.mysql.MySqlConnector",         "tasks.max": "1",         "database.hostname": "mysql",         "database.port": "3306",         "database.user": "MYSQL_USER",         "database.password": "MYSQL_PASSWORD",         "database.server.id": "184054",         "database.server.name": "dbserver1",         "database.include.list": "inventory",         "database.history.kafka.bootstrap.servers": "kafka:9092",         "database.history.kafka.topic": "schema-changes.inventory",         "key.converter": "io.confluent.connect.avro.AvroConverter",         "value.converter": "io.confluent.connect.avro.AvroConverter",         "key.converter.schema.registry.url": "http://schema-registry:8081",         "value.converter.schema.registry.url": "http://schema-registry:8081"     } }</code></pre> <p>正如我们所看到的，我们已经在其中配置了数据库的详细信息以及要从中读取更改的数据库，确保将 MYSQL_USER 和 MYSQL_PASSWORD 的值更改为您之前配置的值，现在我们将运行一个命令在 Kafka Connect 中注册它，命令如下：</p> <pre><code class="language-shell">curl -i -X POST -H "Accept:application/json" -H "Content-type:application/json" http://localhost:8083/connectors/ -d @register-mysql.json</code></pre> <p>现在，Debezium 应该能够从 Kafka 读取数据库更改。<br /> 下一步涉及使用 Spark 和 Hudi 从 Kafka 读取数据，并将它们以 Hudi 文件格式放入 Google Cloud Storage Bucket。 在我们开始使用它们之前，让我们了解一下 Hudi 和 Spark 是什么。</p> <p>Apache Hudi 是一个开源数据管理框架，用于简化增量数据处理和数据管道开发。 该框架更有效地管理数据生命周期等业务需求并提高数据质量。 Hudi 使您能够在基于云的数据湖上管理记录级别的数据，以简化更改数据捕获 (CDC) 和流式数据摄取，并帮助处理需要记录级别更新和删除的数据隐私用例。 Hudi 管理的数据集使用开放存储格式存储在云存储桶中，而与 Presto、Apache Hive 和/或 Apache Spark 的集成使用熟悉的工具提供近乎实时的更新数据访问</p> <p>Apache Spark 是用于大规模数据处理的开源统一分析引擎。 Spark 为具有隐式数据并行性和容错性的集群编程提供了一个接口。 Spark 代码库最初是在加州大学伯克利分校的 AMPLab 开发的，后来被捐赠给了 Apache 软件基金会，该基金会一直在维护它。</p> <p>现在，由于我们正在 Google Cloud 上构建解决方案，因此最好的方法是使用 Google Cloud Dataproc。 Google Cloud Dataproc 是一种托管服务，用于处理大型数据集，例如大数据计划中使用的数据集。 Dataproc 是 Google 的公共云产品 Google Cloud Platform 的一部分。 Dataproc 帮助用户处理、转换和理解大量数据。</p> <p>在 Google Dataproc 实例中，预装了 Spark 和所有必需的库。 创建实例后，我们可以在其中运行以下 Spark 作业来完成我们的管道：</p> <pre><code class="language-shell">spark-submit \   --packages org.apache.hudi:hudi-spark3.1.2-bundle_2.12:0.10.1,org.apache.spark:spark-avro_2.12:3.1.2 \   --master yarn --deploy-mode client \   --class org.apache.hudi.utilities.deltastreamer.HoodieDeltaStreamer /usr/lib/hadoop/hudi-packages/hudi-utilities-bundle_2.12-0.10.1.jar \   --table-type COPY_ON_WRITE --op UPSERT \   --target-base-path gs://your-data-lake-bucket/hudi/customers \   --target-table hudi_customers --continuous \   --min-sync-interval-seconds 60 \   --source-class org.apache.hudi.utilities.sources.debezium.MysqlDebeziumSource \   --source-ordering-field _event_origin_ts_ms \   --hoodie-conf schema.registry.url=http://localhost:8081 \   --hoodie-conf hoodie.deltastreamer.schemaprovider.registry.url=http://localhost:8081/subjects/dbserver1.inventory.customers-value/versions/latest \   --hoodie-conf hoodie.deltastreamer.source.kafka.topic=dbserver1.inventory.customers \   --hoodie-conf bootstrap.servers=localhost:9092 \   --hoodie-conf auto.offset.reset=earliest \   --hoodie-conf hoodie.datasource.write.recordkey.field=id \   --hoodie-conf hoodie.datasource.write.partitionpath.field=id \</code></pre> <p>这将运行一个 spark 作业，该作业从我们之前推送到的 Kafka 中获取数据并将其写入 Google Cloud Storage Bucket。 我们必须指定 Kafka 主题、Schema Registry URL 和其他相关配置。</p> <h2 id="结论">结论</h2> <p>可以通过多种方式构建数据湖。 我试图展示如何使用 Debezium、Kafka、Hudi、Spark 和 Google Cloud 构建数据湖。 使用这样的设置，可以轻松扩展管道以管理大量数据工作负载！ 有关每种技术的更多详细信息，可以访问文档。 可以自定义 Spark 作业以获得更细粒度的控制。 这里显示的 Hudi 也可以与 Presto、Hive 或 Trino 集成。 定制的数量是无穷无尽的。 本文提供了有关如何使用上述工具构建基本数据管道的基本介绍！</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-24446.htm">springboot接口如何控制版本？</a></p>
+                                        <p>下一个：<a href="/news/article-24980.htm">“TypeError: Cannot read property ‘xxx‘ of undefined“报错情况分析</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-21773.htm" title="restFul风格传参, 参数中带斜杠/问题">restFul风格传参, 参数中带斜杠/问题</a></li>
+                        <li class="py-2"><a href="/news/article-29630.htm" title="成人怎么学兽医（没基础的成人想学兽医如何开始）">成人怎么学兽医（没基础的成人想学兽医如何开始）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新21.7M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19924.htm" title="欧式沙发靠垫怎么搭配(欧式沙发靠背垫图片)">欧式沙发靠垫怎么搭配(欧式沙发靠背垫图片)</a></li>
+                        <li class="py-2"><a href="/news/article-19463.htm" title="至德动物医院（至诚动物医院）">至德动物医院（至诚动物医院）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-node-share-links.htm" title="FreeV2rayNode节点订阅每天更新21.5M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.5M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34389.htm" title="动物疫苗有效期多久啊（动物疫苗有效期多久啊多少钱）">动物疫苗有效期多久啊（动物疫苗有效期多久啊多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-25443.htm" title="动物诊疗许可证好办吗多少钱（动物诊疗许可证需要什么材料）">动物诊疗许可证好办吗多少钱（动物诊疗许可证需要什么材料）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新22.2M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新22.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35227.htm" title="塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）">塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

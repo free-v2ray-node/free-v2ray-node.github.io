@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-40230.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vue+element+oss实现前端分片上传和断点续传</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="纯前端实现：切片上传断点续传 。断点续传需要在切上上传的基础上实现 前端之前上传OSS，无需后端提供接口。先上完整代码，直接复制，将new OSS里的参数修改成自己公司OSS相关信息后可用，如遇问题，" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-40230.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="vue+element+oss实现前端分片上传和断点续传" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/fb3eb5cf24cde301875b52b99affd055.webp" />
+        <meta property="og:release_date" content="2025-01-13T08:18:10" />
+    <meta property="og:updated_time" content="2025-01-13T08:18:10" />
+        <meta property="og:description" content="纯前端实现：切片上传断点续传 。断点续传需要在切上上传的基础上实现 前端之前上传OSS，无需后端提供接口。先上完整代码，直接复制，将new OSS里的参数修改成自己公司OSS相关信息后可用，如遇问题，" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue+element+oss实现前端分片上传和断点续传">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>vue+element+oss实现前端分片上传和断点续传</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>纯前端实现：<code>切片上传</code><code>断点续传</code> 。<code>断点续传</code>需要在切上上传的基础上实现</p> <p>前端之前上传OSS，无需后端提供接口。先上完整代码，直接复制，将new OSS里的参数修改成自己公司OSS相关信息后可用，如遇问题，请继续往下看。</p> <p><code>oss官方文档</code></p> <p>https://help.aliyun.com/document_detail/111268.html?spm=a2c4g.11186623.6.1111.5a583a07LknRUO</p> <h3 id="代码允许所需环境：vue--element--ali-oss">代码允许所需环境：vue + element + ali-oss</h3> <p>优惠券网站 https://www.cps3.cn/</p> <blockquote> <p>安装ali-oss： cnpm install ali-oss</p> </blockquote> <ul> <li>代码实现</li> </ul> <pre><code>&lt;template&gt;   &lt;div class="dashboard-editor-container"&gt;     &lt;el-upload       class="upload-demo"       action=""       ref="upload"       :file-list="fileList"       :limit="2"       :on-change="handleChange"       :on-remove="handleRemove"       :auto-upload="false"       accept=""     &gt;       &lt;el-button slot="trigger" size="small" type="primary"&gt;选取文件&lt;/el-button&gt;       &lt;el-button style="margin-left: 10px;" size="small" type="success" @click="submitForm"&gt;上传到服务器&lt;/el-button&gt;       &lt;el-button style="margin-left: 10px;" size="small" type="success" @click="resumeUpload"&gt;继续&lt;/el-button&gt;       &lt;el-button style="margin-left: 10px;" size="small" type="success" @click="stopUplosd"&gt;暂停&lt;/el-button&gt;       &lt;el-button style="margin-left: 10px;" size="small" type="success" @click="abortMultipartUpload"&gt;清除切片&lt;/el-button&gt;     &lt;/el-upload&gt;     &lt;el-progress :percentage="percentage" :status="uploadStatus"&gt;&lt;/el-progress&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt;   let OSS = require('ali-oss') // 引入ali-oss插件   const client = new OSS({     region: 'oss-cn-shanghai',//根据那你的Bucket地点来填写     accessKeyId: 'LTA*********RaXY',//自己账户的accessKeyId     accessKeySecret: 'uu1************GiS',//自己账户的accessKeySecret     bucket: 'a******o',//bucket名字   }); export default {   data () {     return {       fileList:[],       file: null,       tempCheckpoint: null, // 用来缓存当前切片内容       uploadId: '',       uploadStatus: null, // 进度条上传状态       percentage: 0, // 进度条百分比       uploadName: '',  //Object所在Bucket的完整路径     }   },   mounted() {     // window.addEventListener('online',  this.resumeUpload);   },   methods: {     // 点击上传至服务器     submitForm(file) {       this.multipartUpload();     },     // 取消分片上传事件     async abortMultipartUpload() {       window.removeEventListener('online', this.resumeUpload)       const name = this.uploadName; // Object所在Bucket的完整路径。       const uploadId = this.upload; // 分片上传uploadId。       const result = await client.abortMultipartUpload(name, uploadId);       console.log(result, '=======清除切片====');     },     // 暂停分片上传。     stopUplosd () {       window.removeEventListener('online', this.resumeUpload) // 暂停时清除时间监听       let result = client.cancel();       console.log( result, '---------暂停上传-----------')     },     // 切片上传     async multipartUpload () {       if (!this.file) {         this.$message.error('请选择文件')         return       }       this.uploadStatus = null       // console.log("this.uploadStatus",this.file, this.uploadStatus);        this.percentage = 0       try {         //object-name可以自定义为文件名（例如file.txt）或目录（例如abc/test/file.txt）的形式，实现将文件上传至当前Bucket或Bucket下的指定目录。         let result = await client.multipartUpload(this.file.name, this.file, {           headers: {             'Content-Disposition': 'inline',             'Content-Type': this.file.type //注意：根据图片或者文件的后缀来设置，我试验用的‘.png’的图片，具体为什么下文解释           },           progress: (p, checkpoint) =&gt; {             this.tempCheckpoint = checkpoint;             this.upload = checkpoint.uploadId             this.uploadName = checkpoint.name             this.percentage = p * 100             // console.log(p, checkpoint, this.percentage, '---------uploadId-----------')             // 断点记录点。浏览器重启后无法直接继续上传，您需要手动触发上传操作。           },           meta: { year: 2020, people: 'dev' },           mime: this.file.type         });         console.log(result, this.percentage, 'result= 切片上传完毕=');       } catch (e) {         window.addEventListener('online',  this.resumeUpload) // 该监听放在断网的异常处理         // 捕获超时异常。         if (e.code === 'ConnectionTimeoutError') { // 请求超时异常处理           this.uploadStatus = 'exception'           console.log("TimeoutError");           // do ConnectionTimeoutError operation         }         // console.log(e)       }     },     // 恢复上传。     async resumeUpload () {       window.removeEventListener('online', this.resumeUpload)       if (!this.tempCheckpoint) {         this.$message.error('请先上传')         return       }       this.uploadStatus = null       try {         let result = await client.multipartUpload(this.file.name, this.file, {           headers: {             'Content-Disposition': 'inline',             'Content-Type': this.file.type //注意：根据图片或者文件的后缀来设置，我试验用的‘.png’的图片，具体为什么下文解释           },            progress: (p, checkpoint) =&gt; {             this.percentage = p * 100             console.log(p, checkpoint, 'checkpoint----恢复上传的切片信息-------')             this.tempCheckpoint = checkpoint;           },           checkpoint: this.tempCheckpoint,           meta: { year: 2020, people: 'dev' },           mime: this.file.type         })         console.log(result, 'result-=-=-恢复上传完毕')       } catch (e) {         console.log(e, 'e-=-=-');       }     },      // 选择文件发生改变     handleChange(file, fileList) {       this.fileList = fileList.filter(row =&gt; row.uid == file.uid)       this.file = file.raw       // 文件改变时上传       // this.submitForm(file)     },     handleRemove(file, fileList) {       this.percentage = 0 //进度条置空       this.fileList = []     },   } } &lt;/script&gt;  &lt;style scoped&gt; &lt;/style&gt;</code></pre> <p>如果相关依赖已经安装完毕，但是上述代码操作时仍有报错，请检查以下问题</p> <pre><code>  const client = new OSS({     region: 'oss-cn-shanghai',//根据那你的Bucket地点来填写     accessKeyId: 'LT******XY',//自己账户的accessKeyId     accessKeySecret: 'uu*********GiS',//自己账户的accessKeySecret     bucket: 'a******io',//bucket名字   });</code></pre> <ul> <li>上述信息放在前端会存在安全问题，如在项目中使用尽量由后端接口提供。或使用STS临时授权。demo中没有，请自行探索。<br /> https://www.alibabacloud.com/help/zh/doc-detail/100624.htm?spm=a2c63.p38356.879954.5.7a234d04IQpf5I#concept-xzh-nzk-2gb</li> </ul> <blockquote> <p>配置项中信息可以问后端或者运维，bucket的名字必须是你OSS上存在的且你有权限访问的，不然会一直报<code>Pleasr create a busket first</code>或者一直报跨域</p> </blockquote> <blockquote> <p>当遇到跨域时，或者遇到报报错信息中有<code>etag</code>时，请检查OSS配置，然后找有OSS服务器权限人员进行配置：</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220605/43996a942ea919ed21c103ea40f56d82.jpg" alt="vue+element+oss实现前端分片上传和断点续传"></p> <blockquote> <p><code>window.addEventListener('online', this.resumeUpload)</code>用于监听网络状态（断网状态和连网状态），实现断网后恢复网络自动上传就必须设置监听。</p> </blockquote> <blockquote> <p><code>window.removeEventListener('online', this.resumeUpload)</code>取消监听。如果不设置取消监听，联网状态下会一直处于进行上传，因为一直满足监听条件`</p> </blockquote> <pre><code>headers: {             'Content-Disposition': 'inline',             'Content-Type': this.file.type //注意：根据图片或者文件的后缀来设置，我取得是文件的type，具体为什么下文解释           },</code></pre> <blockquote> <p>'Content-Type': this.file.type`的作用：加了在文件上传完毕后，访问文件链接时可以直接查看，否则会直接下载。</p> </blockquote> <blockquote> <p>文件上传完毕后查看，可以去resule.res.requestUrls中去取，但是注意要去点地址后面的<code>?uploadId=******</code></p> </blockquote> <p>上述代码只是demo，代码以实现功能为主，并不严谨，请自行完善。如对各位有所帮助，请推荐，谢谢各位！。</p> <p>以上就是全部内容，如有疑问，敬请留言！如有问题，请指出，谢谢~~</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-39745.htm">宠物粮在哪个网站买便宜些（宠物粮在哪里批发）</a></p>
+                                        <p>下一个：<a href="/news/article-40231.htm">狗粮批发市场进货渠道小包装多少钱一箱（狗粮批发市场进货渠道小包装多少钱一箱）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-35226.htm" title="mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中">mysql从一张表更新到另一张表中_MySQL 从一张表update字段到另外一张表中</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-high-speed-nodes.htm" title="ShadowsocksR Node节点订阅每天更新21M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-49193.htm" title="动物疫苗的作用是什么呢图片 动物疫苗的作用是什么呢图片大全">动物疫苗的作用是什么呢图片 动物疫苗的作用是什么呢图片大全</a></li>
+                        <li class="py-2"><a href="/news/article-31432.htm" title="动物打疫苗需要多少钱一次打（动物打疫苗需要多少钱一次打完）">动物打疫苗需要多少钱一次打（动物打疫苗需要多少钱一次打完）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-node-subscribe.htm" title="ShadowsocksR Node节点订阅每天更新18.7M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新18.7M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20381.htm" title="天照实业（天照国际艺术教育怎么样）">天照实业（天照国际艺术教育怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-43712.htm" title="SpringCloud Feign整合Sentinel">SpringCloud Feign整合Sentinel</a></li>
+                        <li class="py-2"><a href="/news/article-45194.htm" title="宠物粮食加工厂需要投资多少钱一个月呢英语翻译（宠物粮加工设备）">宠物粮食加工厂需要投资多少钱一个月呢英语翻译（宠物粮加工设备）</a></li>
+                        <li class="py-2"><a href="/news/article-42215.htm" title="宠物粮销售渠道策划方案模板（宠物粮销售渠道策划方案模板怎么写）">宠物粮销售渠道策划方案模板（宠物粮销售渠道策划方案模板怎么写）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-subscribe-node.htm" title="ShadowsocksR Node节点订阅每天更新20M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新20M/S免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

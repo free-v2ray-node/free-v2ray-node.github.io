@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-43214.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>设置网页脚本动态顺序加载</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="介绍   最近为了提升页面加载速度，寻找了一下解决方案，其中方案之一就是让页面脚本动态顺序加载，以下介绍该方案的原理以及实现。   众所周知，浏览器加载 JavaScript 脚本，主要通过&lt;s" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-43214.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="设置网页脚本动态顺序加载" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/1228f8850ef42e5cb195b187095230d9.webp" />
+        <meta property="og:release_date" content="2025-01-19T07:11:23" />
+    <meta property="og:updated_time" content="2025-01-19T07:11:23" />
+        <meta property="og:description" content="介绍   最近为了提升页面加载速度，寻找了一下解决方案，其中方案之一就是让页面脚本动态顺序加载，以下介绍该方案的原理以及实现。   众所周知，浏览器加载 JavaScript 脚本，主要通过&lt;s" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="设置网页脚本动态顺序加载">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>FreeV2rayNode</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>设置网页脚本动态顺序加载</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h3><a id="_0" rel="nofollow"></a>介绍</h3> <p>  最近为了提升页面加载速度，寻找了一下解决方案，其中方案之一就是让页面脚本动态顺序加载，以下介绍该方案的原理以及实现。<br />   众所周知，浏览器加载 JavaScript 脚本，主要通过<code>&lt;script&gt;</code>元素完成。正常的网页加载流程是这样的。浏览器加载网页的流程一般如下：</p> <ol> <li>浏览器一边下载 HTML 网页，一边开始解析。也就是说，不等到下载完，就开始解析。</li> <li>解析过程中，浏览器发现<code>&lt;script&gt;</code>元素，就暂停解析，把网页渲染的控制权转交给 JavaScript 引擎。</li> <li>如果<code>&lt;script&gt;</code>元素引用了外部脚本，就下载该脚本再执行，否则就直接执行代码。</li> <li>JavaScript 引擎执行完毕，控制权交还渲染引擎，恢复往下解析 HTML 网页。</li> </ol> <p>  加载外部脚本时，浏览器会暂停页面渲染，等待脚本下载并执行完成后，再继续渲染。原因是 JavaScript 代码可以修改 DOM，所以必须把控制权让给它，否则会导致复杂的线程竞赛的问题。<br />   如果我们可以让外部脚本动态加载，自然提高了页面加载速度；</p> <h3><a id="_11" rel="nofollow"></a>脚本的动态加载</h3> <p>  通过动态生成<code>&lt;script&gt;</code>元素，生成后再插入到页面当中，可实现脚本的动态加载。比如页面需要动态加载a.js和b.js；代码如下：</p> <pre><code class="prism language-javascript"><span class="token punctuation">[</span><span class="token string">'a.js'</span><span class="token punctuation">,</span><span class="token string">'b.js'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> script<span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   script<span class="token punctuation">.</span>src<span class="token operator">=</span> src<span class="token punctuation">;</span>   document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>  以上方法动态生成的script标签不会阻塞页面渲染，不会造成浏览器假死。但若多个脚本之间约定需要顺序执行；这种方法无法保证脚本的执行顺序，哪个脚本文件先下载完成，就先执行哪个。以下给出动态顺序加载解决方案；</p> <h3><a id="_24" rel="nofollow"></a>脚本的动态顺序加载</h3> <p>  如果多个脚本之间有执行顺序，可以设置async属性为false。代码如下：</p> <pre><code class="prism language-typescript"><span class="token punctuation">[</span><span class="token string">'a.js'</span><span class="token punctuation">,</span><span class="token string">'b.js'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> script<span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   script<span class="token punctuation">.</span>src<span class="token operator">=</span> src<span class="token punctuation">;</span>   script<span class="token punctuation">.</span><span class="token keyword">async</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>   document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>  上面的代码不会阻塞页面渲染，而且可以保证b.js在a.js后面执行。不过需要注意的是，在这段代码后面加载的脚本，会因此都等待b.js执行完成后再执行。若想将脚本文件放最后执行，则可将这部分代码放在脚本最后。<br />   其次，若想为动态加载的脚本指定回调函数，可以借助<code>onload</code>方法；写法如下：</p> <pre><code class="prism language-typescript"><span class="token keyword">function</span><span class="token function">loadScript</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span> done<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">var</span> js<span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   js<span class="token punctuation">.</span>src<span class="token operator">=</span> src<span class="token punctuation">;</span>   js<span class="token punctuation">.</span><span class="token function-variable function">onload</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//回调函数</span><span class="token punctuation">}</span><span class="token punctuation">;</span>   js<span class="token punctuation">.</span><span class="token function-variable function">onerror</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Failed to load script '</span><span class="token operator">+</span> src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>   document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>js<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <blockquote> <p>参考网址：<br /> https://www.wangdoc.com/javascript/bom/engine.html#%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E</p> </blockquote> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-42720.htm">参观动物医院的实验报告怎么写（参观动物医院有感）</a></p>
+                                        <p>下一个：<a href="/news/article-43215.htm">给动物注射疫苗属于什么免疫类型（给动物注射疫苗产生的免疫属于什么免疫）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-38265.htm" title="领养宠物需要什么条件和手续2021年8月（领养宠物需要什么条件和手续2021年8月1日）">领养宠物需要什么条件和手续2021年8月（领养宠物需要什么条件和手续2021年8月1日）</a></li>
+                        <li class="py-2"><a href="/news/article-20839.htm" title="动物疫苗股票龙头股（动物疫苗股票龙头股排名）">动物疫苗股票龙头股（动物疫苗股票龙头股排名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-high-speed-nodes.htm" title="ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新22.8M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43214.htm" title="设置网页脚本动态顺序加载">设置网页脚本动态顺序加载</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新21.5M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新21.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41217.htm" title="一家宠物店每月给购买猫粮5kg以上的顾客（宠物店一个月卖几只）">一家宠物店每月给购买猫粮5kg以上的顾客（宠物店一个月卖几只）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-node-share.htm" title="ShadowsocksR Node节点订阅每天更新21.2M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新21.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29158.htm" title="动物医院破解版无限金币无广告 动物医院无限金币破解版下载">动物医院破解版无限金币无广告 动物医院无限金币破解版下载</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新20.8M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新20.8M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-node-subscribe-links.htm" title="ShadowsocksR Node节点订阅每天更新22.9M/S免费节点订阅链接">ShadowsocksR Node节点订阅每天更新22.9M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">92</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
