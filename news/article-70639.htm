@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-70639.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>springboot接口如何控制版本？</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="dubbo有一套自己的版本控制策略，消费者根据服务提供者的version进行配置，最终实现版本控制，在springboot中又如何实现？ springboot中控制版本，其实很简单粗暴，不同版本的接口" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-70639.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="springboot接口如何控制版本？" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/6dde879298ab362ce9c19b5c4fa70dc6.webp" />
+        <meta property="og:release_date" content="2025-03-10T04:35:03" />
+    <meta property="og:updated_time" content="2025-03-10T04:35:03" />
+        <meta property="og:description" content="dubbo有一套自己的版本控制策略，消费者根据服务提供者的version进行配置，最终实现版本控制，在springboot中又如何实现？ springboot中控制版本，其实很简单粗暴，不同版本的接口" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springboot接口如何控制版本？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Free V2ray Node</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>springboot接口如何控制版本？</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>dubbo有一套自己的版本控制策略，消费者根据服务提供者的version进行配置，最终实现版本控制，在springboot中又如何实现？</p> <p>springboot中控制版本，其实很简单粗暴，不同版本的接口，可以直接写两个接口，接口uri不一样，不就OK了吗？但是为了让同一个项目组的同学都能按照一定的版本规则写接口，我们需要稍微做点加工。<br /> 简单粗暴版：<br /><strong>/api/query/studentInfo1<br /> /api/query/studentInfo2</strong></p> <p>规范版：<br /><span style="color:#494949;"><strong>/v1/api/query/studentInfo<br /> /v2/api/query/studentInfo</strong></span></p> <p>具体实现：</p> <p>需要继承RequestMappingHandlerMapping类，重写org.springframework.web.servlet.handler.AbstractHandlerMethodMapping#registerHandlerMethod方法。RequestMappingHandlerMapping是根据类或方法上的 @RequestMapping 来生成 RequestMappingInfo 的实例，负责根据用户请求（uri）匹配找到Handler即处理器（controller层加了RequestMapping注解的方法）。</p> <pre><code class="language-java">package com.cn.dl.springbootdemo.annotation;  import org.springframework.core.annotation.AliasFor;  import java.lang.annotation.ElementType; import java.lang.annotation.Retention; import java.lang.annotation.RetentionPolicy; import java.lang.annotation.Target;  /**  * @author yanshao  * @date 2022/8/11 10:31 上午  */ @Target({ElementType.METHOD, ElementType.TYPE}) @Retention(RetentionPolicy.RUNTIME) public @interface ApiVersion {      @AliasFor("path")     String[] value() default {};      @AliasFor("value")     String[] path() default {};  } </code></pre> <p><span style="color:#fe2c24;">这块代码有较详细的注释，最后自己debug跟一下spring源码</span></p> <pre><code class="language-java">package com.cn.dl.springbootdemo.handler;  import com.cn.dl.springbootdemo.annotation.ApiVersion; import org.springframework.core.annotation.AnnotationUtils; import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition; import org.springframework.web.servlet.mvc.method.RequestMappingInfo; import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;  import java.lang.reflect.Method; import java.util.Objects;  /**  * @author yanshao  * @date 2022/8/11 10:32 上午  */ public class ApiVersionHandlerMapping extends RequestMappingHandlerMapping {      @Override     protected void registerHandlerMethod(Object handler, Method method, RequestMappingInfo mappingInfo) {         //类上加了ApiVersion注解         ApiVersion apiVersion = AnnotationUtils.findAnnotation(method.getDeclaringClass(), ApiVersion.class);          //可同时指定多个版本，类似于org.springframework.web.bind.annotation.RequestMapping.value的paths         String[] urlPatterns = Objects.isNull(apiVersion) ? new String[0] : apiVersion.value();          //api版本urlPatterns         PatternsRequestCondition apiVersionPattern = new PatternsRequestCondition(urlPatterns);          //当前未增加版本的paths，例如：/api/query/studentInfo         PatternsRequestCondition curtPattern = mappingInfo.getPatternsCondition();          //加版本号增加到curtPath之前，例如：/v1 + /api/query/studentInfo -&gt; /v1/api/query/studentInfo         PatternsRequestCondition updatedFinalPattern = apiVersionPattern.combine(curtPattern);          //构建新的RequestMappingInfo         mappingInfo = new RequestMappingInfo(                 mappingInfo.getName(),                 updatedFinalPattern,                 mappingInfo.getMethodsCondition(),                 mappingInfo.getParamsCondition(),                 mappingInfo.getHeadersCondition(),                 mappingInfo.getConsumesCondition(),                 mappingInfo.getProducesCondition(),                 mappingInfo.getCustomCondition()         );         super.registerHandlerMethod(handler, method, mappingInfo);     } } </code></pre> <pre><code class="language-java">package com.cn.dl.springbootdemo.handler;  import org.springframework.boot.SpringBootConfiguration; import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations; import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;  /**  * @author yanshao  * @date 2022/8/11 10:36 上午  */ @SpringBootConfiguration public class MvcMappingConfig implements WebMvcRegistrations {      //注册ApiVersionHandlerMapping组件     @Override     public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {         return new ApiVersionHandlerMapping();     } } </code></pre> <pre><code class="language-java">package com.cn.dl.springbootdemo.controller;  import com.alibaba.fastjson.JSONObject; import com.cn.dl.springbootdemo.annotation.ApiVersion; import org.springframework.web.bind.annotation.GetMapping; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController;  /**  * @author yanshao  * @date 2022/8/11 10:37 上午  */ @RestController @ApiVersion("v1") @RequestMapping("/api/") public class StudentController {      @GetMapping(value = "/query/studentInfo")     public JSONObject studentInfo(){         JSONObject result = new JSONObject();         result.put("name","yanshao");         result.put("age",27);         result.put("apiVersion","v1");         return result;     } } </code></pre> <pre><code class="language-java">package com.cn.dl.springbootdemo.controller;  import com.alibaba.fastjson.JSONObject; import com.cn.dl.springbootdemo.annotation.ApiVersion; import org.springframework.web.bind.annotation.GetMapping; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController;  /**  * @author yanshao  * @date 2022/8/11 10:37 上午  */ @RestController @ApiVersion("v2") @RequestMapping("/api/") public class StudentControllerV2 {      @GetMapping(value = "/query/studentInfo")     public JSONObject studentInfo(){         JSONObject result = new JSONObject();         result.put("name","yanshao");         result.put("age",27);         result.put("apiVersion","v2");         return result;     } } </code></pre> <p>效果：</p> <p><img fetchpriority="high" decoding="async" alt="" height="656" src="http://img.555519.xyz/uploads/20230119/e899a9d840d1d23ea2f6b2e1f89d1bb8.jpg"></p> <p><img decoding="async" alt="" height="662" src="http://img.555519.xyz/uploads/20230119/d9fb869e77823c4a8c1d9f9b7a42fee3.jpg"></p> <p>&nbsp;不知道大家发现一个缺陷了吗？为了搞一个不同版本的接口，还得重新写一个类，是不是ApiVersion注解可以放在方法上？这需要修改一下ApiVersionHandlerMapping，就可以支持同一个Controller中不同版本的接口了。</p> <pre><code class="language-java">package com.cn.dl.springbootdemo.handler;  import com.cn.dl.springbootdemo.annotation.ApiVersion; import org.springframework.core.annotation.AnnotationUtils; import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition; import org.springframework.web.servlet.mvc.method.RequestMappingInfo; import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;  import java.lang.reflect.Method; import java.util.Objects;  /**  * @author yanshao  * @date 2022/8/11 10:32 上午  */ public class ApiVersionHandlerMapping extends RequestMappingHandlerMapping {      @Override     protected void registerHandlerMethod(Object handler, Method method, RequestMappingInfo mappingInfo) {         //类上加了ApiVersion注解 //        ApiVersion apiVersionClass = AnnotationUtils.findAnnotation(method.getDeclaringClass(), ApiVersion.class);          //方法上加了ApiVersion注解         ApiVersion apiVersionMethod = AnnotationUtils.findAnnotation(method, ApiVersion.class);          //可同时指定多个版本，类似于org.springframework.web.bind.annotation.RequestMapping.value的paths         String[] urlPatterns = Objects.isNull(apiVersionMethod) ? new String[0] : apiVersionMethod.value();          //api版本urlPatterns         PatternsRequestCondition apiVersionPattern = new PatternsRequestCondition(urlPatterns);          //当前未增加版本的paths，例如：/api/query/studentInfo //        PatternsRequestCondition curtPattern = mappingInfo.getPatternsCondition();          //加版本号增加到curtPath之前，例如：/v1 + /api/query/studentInfo -&gt; /v1/api/query/studentInfo         PatternsRequestCondition updatedFinalPattern = apiVersionPattern.combine(mappingInfo.getPatternsCondition());          //构建新的RequestMappingInfo         mappingInfo = new RequestMappingInfo(                 mappingInfo.getName(),                 updatedFinalPattern,                 mappingInfo.getMethodsCondition(),                 mappingInfo.getParamsCondition(),                 mappingInfo.getHeadersCondition(),                 mappingInfo.getConsumesCondition(),                 mappingInfo.getProducesCondition(),                 mappingInfo.getCustomCondition()         );         super.registerHandlerMethod(handler, method, mappingInfo);     } } </code></pre> <pre><code class="language-java">package com.cn.dl.springbootdemo.controller;  import com.alibaba.fastjson.JSONObject; import com.cn.dl.springbootdemo.annotation.ApiVersion; import org.springframework.web.bind.annotation.GetMapping; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController;  /**  * @author yanshao  * @date 2022/8/11 10:37 上午  */ @RestController @RequestMapping("/api/") public class StudentController {      @ApiVersion("v1")     @GetMapping(value = "/query/studentInfo")     public JSONObject studentInfoV1(){         JSONObject result = new JSONObject();         result.put("name","yanshao");         result.put("age",27);         result.put("apiVersion","v1");         return result;     }      @ApiVersion("v2")     @GetMapping(value = "/query/studentInfo")     public JSONObject studentInfoV2(){         JSONObject result = new JSONObject();         result.put("name","yanshao");         result.put("age",27);         result.put("apiVersion","v2");         return result;     } } </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69993.htm">中国动物疫苗市场分析（中国动物疫苗市场分析图）</a></p>
+                                        <p>下一个：<a href="/news/article-70640.htm">兽用肠炎中药配方（兽用肠道消炎药首选有哪些）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-61909.htm" title="妙三多疫苗间隔多久打一针最好（妙三多疫苗间隔多久打一针最好呢）">妙三多疫苗间隔多久打一针最好（妙三多疫苗间隔多久打一针最好呢）</a></li>
+                        <li class="py-2"><a href="/news/article-60132.htm" title="动物疫苗销售需要什么手续和条件呢（卖动物疫苗利润有多高）">动物疫苗销售需要什么手续和条件呢（卖动物疫苗利润有多高）</a></li>
+                        <li class="py-2"><a href="/news/article-45194.htm" title="宠物粮食加工厂需要投资多少钱一个月呢英语翻译（宠物粮加工设备）">宠物粮食加工厂需要投资多少钱一个月呢英语翻译（宠物粮加工设备）</a></li>
+                        <li class="py-2"><a href="/news/article-65554.htm" title="动物疫苗有哪些种类及作用及副作用（动物疫苗有哪些种类及作用及副作用）">动物疫苗有哪些种类及作用及副作用（动物疫苗有哪些种类及作用及副作用）</a></li>
+                        <li class="py-2"><a href="/news/article-51280.htm" title="宠物粮食品牌名字4个字大全图片及名字 宠物粮食品牌名字4个字大全图片及名字">宠物粮食品牌名字4个字大全图片及名字 宠物粮食品牌名字4个字大全图片及名字</a></li>
+                        <li class="py-2"><a href="/news/article-50743.htm" title="宠物粮进货平台排名榜单图片（宠物粮进货平台排名榜单图片）">宠物粮进货平台排名榜单图片（宠物粮进货平台排名榜单图片）</a></li>
+                        <li class="py-2"><a href="/news/article-36303.htm" title="VUE项目解决Vant组件库样式修改不生效问题">VUE项目解决Vant组件库样式修改不生效问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新19.3M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新19.3M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51800.htm" title="中国十大宠物粮生产企业名单公示（中国十大宠物粮生产企业名单公示栏）">中国十大宠物粮生产企业名单公示（中国十大宠物粮生产企业名单公示栏）</a></li>
+                        <li class="py-2"><a href="/news/article-57272.htm" title="一片片枫叶从树上落下来就像（一片片枫叶从树上落下来就像什么补充句子）">一片片枫叶从树上落下来就像（一片片枫叶从树上落下来就像什么补充句子）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
