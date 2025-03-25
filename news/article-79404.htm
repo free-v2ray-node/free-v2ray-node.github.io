@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-79404.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django实现统一包装接口返回值数据格式</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="前言 最近实在太忙了，开始了一个新的项目，为了快速形成产品，我选择了Django来实现后端，然后又拿起了之前我封装了项目脚手架「DjangoStarter」。 由于前段时间我写了不少.NetCore的" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-79404.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="Django实现统一包装接口返回值数据格式" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/3450423c2844fea25b7ca5cb820fec29.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:20:43" />
+    <meta property="og:updated_time" content="2025-03-23T08:20:43" />
+        <meta property="og:description" content="前言 最近实在太忙了，开始了一个新的项目，为了快速形成产品，我选择了Django来实现后端，然后又拿起了之前我封装了项目脚手架「DjangoStarter」。 由于前段时间我写了不少.NetCore的" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Django实现统一包装接口返回值数据格式">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Free V2ray Node</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>Django实现统一包装接口返回值数据格式</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<h2 id="前言">前言</h2> <p>最近实在太忙了，开始了一个新的项目，为了快速形成产品，我选择了Django来实现后端，然后又拿起了之前我封装了项目脚手架<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/Deali-Axy/DjangoStarter"  target="_blank" rel="nofollow">「DjangoStarter」</a>。</p> <p>由于前段时间我写了不少.NetCore的后端代码，对CRUD的接口开发又有了一些新的理解，所以肯定也要把DjangoStarter改造一番，改得更加顺手~</p> <blockquote> <p>题外话：话说我在前端终于真正用上react，不得不说 ts + react 真好用，「前端带师」的安利可真不错啊（妙啊</p> </blockquote> <h2 id="正题">正题</h2> <p>准确来讲是搭配<code>DjangoRestFramework</code>来实现的，核心代码分为两部分，一个是错误处理包装，一个是响应包装<code>renderer</code>。</p> <p>无论请求是否报错，都会被我们自定义的<code>renderer</code>包装。</p> <h2 id="代码">代码</h2> <p>开始上代码吧~</p> <p>首先在项目里添加一个新的Python包，位置根据情况自行安排，我在<code>DjangoStarter</code>模板中的位置是<code>utils/response</code>，接下来的两个文件都会放在这个目录中</p> <p>第一个是错误处理的<code>exception.py</code>文件代码</p> <pre><code class="language-python">from typing import Dict  from rest_framework.exceptions import ValidationError from rest_framework.views import exception_handler from rest_framework.views import Response from rest_framework.utils.serializer_helpers import ReturnDict from rest_framework import status   def custom_handler(err: ValidationError, context: dict):     # 先调用REST framework默认的异常处理方法获得标准错误响应对象     response: Response = exception_handler(err, context)      if response is None:         return Response({             'message': f'服务器错误:{err}'         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR, exception=True)      else:         res = {'message': response.reason_phrase}         res.update(response.data)         return Response(res, status=response.status_code, exception=True)</code></pre> <p>然后是自定义<code>renderer.py</code>代码：</p> <pre><code class="language-python">from rest_framework.renderers import JSONRenderer   class CustomRenderer(JSONRenderer):     # 重构render方法     def render(self, data, accepted_media_type=None, renderer_context=None):         if renderer_context:             # 响应的信息，成功和错误的都是这个             # 成功和异常响应的信息，异常信息在前面自定义异常处理中已经处理为{'message': 'error'}这种格式              # 如果返回的data为字典             if isinstance(data, dict):                 # 响应信息中有message和code这两个key，则获取响应信息中的message和code，并且将原本data中的这两个key删除，放在自定义响应信息里                 # 响应信息中没有则将msg内容改为请求成功 code改为请求的状态码                 msg = data.pop('message', '请求成功')                 code = data.pop('code', renderer_context["response"].status_code)             # 如果不是字典则将msg内容改为请求成功 code改为响应的状态码             else:                 msg = '请求成功'                 code = renderer_context["response"].status_code              # 自定义返回的格式             ret = {                 'message': msg,                 'code': code,                 'data': data,             }             # 返回JSON数据             return super().render(ret, accepted_media_type, renderer_context)         else:             return super().render(data, accepted_media_type, renderer_context)</code></pre> <p>关键的地方都注释了，很容易看懂</p> <p>包装出来每个接口的返回值就都是这个样子</p> <pre><code class="language-json">{     "message": "msg",     "code": 200,     "data": {         "data1": "123"     } }</code></pre> <h2 id="配置">配置</h2> <p>为了让上面的代码发挥作用，还得配置一下RestFramework</p> <p>编辑<code>settings.py</code>文件，在<code>REST_FRAMEWORK</code>节点添加这两个配置，注意路径要和前面两个文件的路径一致。这里我是以<code>DjangoStarter</code>项目为例。</p> <pre><code class="language-python">REST_FRAMEWORK = {     # 全局配置异常模块     'EXCEPTION_HANDLER': 'utils.response.exception.custom_handler',     # 修改默认返回JSON的renderer的类     'DEFAULT_RENDERER_CLASSES': ('utils.response.renderer.CustomRenderer',), }</code></pre> <p>现在就完成了~ 就是这么简单。</p> <blockquote> <p>（比AspNetCore包装返回值简单……）</p> </blockquote> <p>完整代码可以在GitHub上查看：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/Deali-Axy/DjangoStarter"  target="_blank" rel="nofollow">https://github.com/Deali-Axy/DjangoStarter</a></p> <h2 id="参考资料">参考资料</h2> <ul> <li>Django rest framework自定义返回数据格式：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_41475058/article/details/112676908"  target="_blank" rel="nofollow">https://blog.csdn.net/qq_41475058/article/details/112676908</a></li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-78719.htm">开宠物店的利润和风险大吗（开宠物店投资多少钱一月能得多少利）</a></p>
+                                        <p>下一个：<a href="/news/article-79405.htm">穷养布偶猫吃什么猫粮知乎（布偶猫吃什么猫粮比较好贵的）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-node-subscribe-links.htm" title="FreeV2rayNode节点订阅每天更新18.3M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.3M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-72619.htm" title="宠物领养启示作文（宠物领养启示作文怎么写）">宠物领养启示作文（宠物领养启示作文怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-68062.htm" title="狗粮颗粒机成型原理视频教学（狗粮颗粒机多少钱一台）">狗粮颗粒机成型原理视频教学（狗粮颗粒机多少钱一台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-node-share-links.htm" title="ShadowsocksR Node节点订阅每天更新19.3M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新19.3M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-77340.htm" title="人打的疫苗和动物打的疫苗一样吗知乎（人打的疫苗和动物打的疫苗一样吗知乎文章）">人打的疫苗和动物打的疫苗一样吗知乎（人打的疫苗和动物打的疫苗一样吗知乎文章）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-node-share.htm" title="FreeV2rayNode节点订阅每天更新20.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-49194.htm" title="动物疫苗储存温度（动物疫苗的储存温度）">动物疫苗储存温度（动物疫苗的储存温度）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新19.9M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.9M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-54487.htm" title="聊城狗市在哪里（聊城哪里有狗市）">聊城狗市在哪里（聊城哪里有狗市）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe.htm" title="ShadowsocksR Node节点订阅每天更新22.9M/S免费节点订阅链接地址">ShadowsocksR Node节点订阅每天更新22.9M/S免费节点订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">73</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
