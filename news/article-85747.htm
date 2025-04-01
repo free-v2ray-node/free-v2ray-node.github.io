@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-85747.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>canvas生成带有二维码的海报</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="如果对你有帮助可以点个赞，有时间的话也可以来个评论。 需求：点击图片弹窗生成带有二维码的海报。 遇到相关问题：1、生成的图片会模糊、不清晰。 2、 苹果手机和安卓手机 文字位置和字体大小有差异  引入" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-85747.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="canvas生成带有二维码的海报" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/7edf337ce9e76f120b4c44fb67a168b6.webp" />
+        <meta property="og:release_date" content="2025-04-01T09:45:55" />
+    <meta property="og:updated_time" content="2025-04-01T09:45:55" />
+        <meta property="og:description" content="如果对你有帮助可以点个赞，有时间的话也可以来个评论。 需求：点击图片弹窗生成带有二维码的海报。 遇到相关问题：1、生成的图片会模糊、不清晰。 2、 苹果手机和安卓手机 文字位置和字体大小有差异  引入" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="canvas生成带有二维码的海报">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Free V2ray Node</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>canvas生成带有二维码的海报</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="_0" rel="nofollow"></a>如果对你有帮助可以点个赞，有时间的话也可以来个评论。</h2> <p>需求：点击图片弹窗生成带有二维码的海报。<br /> 遇到相关问题：1、生成的图片会模糊、不清晰。<br /> 2、 苹果手机和安卓手机 文字位置和字体大小有差异</p> <ol> <li>引入所需要的文件</li> </ol> <pre><code>//jquery.js &lt;script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt; //解决生成的图片模糊、不清晰问题 &lt;script src="/images/202010/hidpi-canvas.min.js"&gt;&lt;/script&gt;  </code></pre> <ol start="2"> <li>生成海报图片</li> </ol> <pre><code>&lt;script&gt;     // 执行代码     $(function () {          //  像素密度 如果没这段代码生成的图片可能会模糊         function getPixelRatio(context) {             var backingStore = context.backingStorePixelRatio ||                 context.webkitBackingStorePixelRatio ||                 context.mozBackingStorePixelRatio ||                 context.msBackingStorePixelRatio ||                 context.oBackingStorePixelRatio ||                 context.backingStorePixelRatio || 1;             return (window.devicePixelRatio || 1) / backingStore;         };         //点击事件         $(".myImg").click(function () {             $(".dialog").fadeIn();             var dialogSrc = $(this).attr("src")             var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');             //2.发送请求             $.ajax({                 url: "xxxx",                 type: "post",                 dataType: 'json',                 headers: {                     'X-CSRF-TOKEN': csrfToken                 }, //设置请求头                 success: function (res) {                     var canvas = document.createElement("canvas");                     var context = canvas.getContext("2d");                      var ratio = getPixelRatio(context)                      canvas.width = 262 * ratio;                     canvas.height = 450 * ratio;                     context.rect(0, 0, canvas.width * ratio, canvas.height * ratio);                     context.fillStyle = "#fff";                     context.fill();                      var myImage2 = new Image();                     //背景图                     myImage2.src = dialogSrc                     //获取终端                     var u = navigator.userAgent;                     var isAndroid = u.indexOf('Android') &gt; -1 || u.indexOf('Adr') &gt; -1; //android终端                     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端                     myImage2.onload = function () {                         context.drawImage(myImage2, 0, 0, 262 * ratio, 450 * ratio);                         //文本                         var text = res.data.company + ',' + res.data.sales;                         var str = new Array();                         str = text.split(",");                         var uphight = 0                         //解决苹果手机和安卓手机 文字位置和字体大小显示差异问题                         for (var i = 0; i &lt; str.length; i++) {                             if (isAndroid) {                                 context.font = "12px Calibri";                                 context.fillText(str[i], 70, 390 + uphight) 								uphight += 20                             }                              if (isiOS) {                                 context.font = "20px Calibri";                                 context.fillText(str[i], 140, 450 * ratio - 120 + uphight) 								uphight += 40                             }                         }                         var myImage = new Image();                         //二维码图片                         myImage.src = res.data.wxcode                         myImage.crossOrigin = 'Anonymous';                         myImage.onload = function () {                             context.drawImage(myImage, 30, 380 * ratio, 48 * ratio, 50 * ratio);                             var base64 = canvas.toDataURL("image/jpeg", 1.0);                             var img = document.getElementById('myPoster');                             img.setAttribute('src', base64);                         }                     }                 },                 error: function (e) {                     console.log('ajax请求异常，异常信息如下：', e);                 }             });         });         //关闭弹窗         $(".close").click(function () {             $(".dialog").fadeOut();         })     }); &lt;/script&gt; </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-85019.htm">狗粮加工（狗粮加工厂赚钱吗）</a></p>
+                                        <p>下一个：<a href="/news/article-85748.htm">动物疫苗是处方药吗知乎（动物疫苗属于疫苗吗）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-71959.htm" title="基于Debian搭建Hyperledger Fabric 2.4开发环境及运行简单案例">基于Debian搭建Hyperledger Fabric 2.4开发环境及运行简单案例</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-high-speed-nodes.htm" title="FreeV2rayNode节点订阅每天更新20M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-85019.htm" title="狗粮加工（狗粮加工厂赚钱吗）">狗粮加工（狗粮加工厂赚钱吗）</a></li>
+                        <li class="py-2"><a href="/news/article-73962.htm" title="动物注射疫苗注意事项及禁忌症是什么意思（动物疫苗使用时的注意事项有哪些）">动物注射疫苗注意事项及禁忌症是什么意思（动物疫苗使用时的注意事项有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-67417.htm" title="养猫***大概需要多少钱一次呀（养猫咪***多少钱）">养猫***大概需要多少钱一次呀（养猫咪***多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-66167.htm" title="延吉市宠物医院 延吉市宠物医院哪家好">延吉市宠物医院 延吉市宠物医院哪家好</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-high-speed-nodes.htm" title="FreeV2rayNode节点订阅每天更新22.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.4M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-73963.htm" title="山东省动物防疫条例（山东省动物防疫条例全文）">山东省动物防疫条例（山东省动物防疫条例全文）</a></li>
+                        <li class="py-2"><a href="/news/article-76665.htm" title="同城领养猫咪平台重庆有几家啊（重庆领养猫咪贴吧）">同城领养猫咪平台重庆有几家啊（重庆领养猫咪贴吧）</a></li>
+                        <li class="py-2"><a href="/news/article-78719.htm" title="开宠物店的利润和风险大吗（开宠物店投资多少钱一月能得多少利）">开宠物店的利润和风险大吗（开宠物店投资多少钱一月能得多少利）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
