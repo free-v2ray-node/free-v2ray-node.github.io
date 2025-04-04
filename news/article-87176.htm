@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-87176.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue项目中使用Mockjs造假数据</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="需求场景：要get请求接口'/api/userInfo/list'      项目准备：      首先，安装项目中mockjs包、axios     npm install mockjs axios" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-87176.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="Vue项目中使用Mockjs造假数据" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/62ccace703f50757337497ff3761f29e.webp" />
+        <meta property="og:release_date" content="2025-04-03T08:27:59" />
+    <meta property="og:updated_time" content="2025-04-03T08:27:59" />
+        <meta property="og:description" content="需求场景：要get请求接口'/api/userInfo/list'      项目准备：      首先，安装项目中mockjs包、axios     npm install mockjs axios" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue项目中使用Mockjs造假数据">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Free V2ray Node</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>Vue项目中使用Mockjs造假数据</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html" style="font-size: 16px;"> <div>   <br class="Apple-interchange-newline"/>需求场景：要get请求接口'/api/userInfo/list'  </div> <div>   项目准备：  </div> <div>   首先，安装项目中mockjs包、axios  </div> <div> <div class="cnblogs_code"> <pre><code class="has">npm install mockjs axios</code> </pre> </p></div> </p></div> <div>   然后，src根<br />   目录下新建mock文件夹和mock.js、urls.js  </div> <div>   (目录结构不强求，主要还是看你项目的划分。也可以单独出一个request文件，放axios.js、mock.js、和专门整理接口用的url.js)  </div> <div>   user.vue文件中，接口请求代码(以axios为例)：  </div> <div> <div class="cnblogs_code"> <pre><code class="has">&lt;template&gt;   &lt;div class="api-element"&gt;     &lt;div class="area"&gt;       &lt;el-table :data="userTableData" &gt;         &lt;el-table-column fixed label="日期" prop="date" width="150"&gt;&lt;/el-table-column&gt;         &lt;el-table-column label="姓名" prop="name" width="120"&gt;&lt;/el-table-column&gt;         &lt;el-table-column label="省份" prop="province" width="120"&gt;&lt;/el-table-column&gt;         &lt;el-table-column label="市区" prop="city" width="120"&gt;&lt;/el-table-column&gt;         &lt;el-table-column label="地址" prop="address" width="300"&gt;&lt;/el-table-column&gt;         &lt;el-table-column label="邮编" prop="zip" width="120"&gt;&lt;/el-table-column&gt;       &lt;/el-table&gt;     &lt;/div&gt;   &lt;/div&gt; &lt;/template&gt; &lt;script&gt; import axios from 'axios' // 引入axios import urls from '@/mock/urls'  // 引入实现准备好的接口请求相关配置 export default {   name: 'MockTest',   data() {     return {       userTableData: [] // 定义需要的数据     }   },   mounted() {     // 数据mock、请求拦截     axios[urls.userTableData.type](urls.userTableData.url)       .then((response) =&gt; {         this.userTableData = response &amp;&amp; response.data         log(this.userTableData);       })       .catch(function (error) {         log(error);       });   }, } &lt;/script&gt;</code> </pre> </p></div> </p></div> <div>   接口相关配置文件urls.js：  </div> <div>   主要记录每条接口需要请求的地址(加过代理的)、请求的方式(get等，方便管理)  </div> <div> <div class="cnblogs_code"> <pre><code class="has">export default {     userTableData: {         url: '/api/userInfo/list',         type: 'get'     } }</code> </pre> </p></div> </p></div> <div>   mock.js文件内部：  </div> <div>   首先，引入mockjs和需要的变量值urls.js  </div> <div> <div class="cnblogs_code"> <pre><code class="has">import Mock, { Random } from 'mockjs' import urls from './urls'</code> </pre> </p></div> </p></div> <div>   然后，定义第一个假数据userTableData，是一个长度为10的数组，数组每一项都是对象，对象键根据vue中表格需要进行配置。  </div> <div> <div class="cnblogs_code"> <pre><code class="has">let params = Mock.mock({ // 数据池     'userTableData|10': [{ // 图表过滤所需数据         'name': '@cname',         'date': '@date',         'province': '@province',         'city': '@city',         'address': '@county(true) @ctitle() @natural(1000,9999) 号',         'zip': '@zip'     }] }) // 设置请求时长200-600毫秒，模拟真实接口请求场景 Mock.setup({     timeout: '200-600' }) // 拦截urls.userTableData.url对应地址的请求，方式urls.userTableData.type，返回值为params.userTableData Mock.mock(urls.userTableData.url, urls.userTableData.type, params.userTableData) // 请求该接口时，拦截请求并返回对应数据 </code> </pre> </p></div> </p></div> <div>   最后，观察vue文件中的ajax请求，返回的response.data的数据就是我们mock的params.userTableData假数据。大功告成，可以专心写逻辑了。  </div> <div>   <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/xingorg1/JuFengGuo/blob/master/advanceCourse/3-VUE/5-vue-api/src/components/Element.vue"  target="_blank" rel="nofollow">源码地址</a>  </div> <div>   <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/xingorg1/JuFengGuo/commit/f3a151796fb0b7b6bf3e58002d3d7a9e762066a7"  target="_blank" rel="nofollow">相关代码提交记录</a>  </div> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-86470.htm">济南美联众合动物医院招聘护士（美联众合动物医院上班时间）</a></p>
+                                        <p>下一个：<a href="/news/article-87177.htm">Unity怎么更换默认脚本编辑器VS</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-74635.htm" title="猫进屋十大预兆黑色猫（猫进屋好不好?）">猫进屋十大预兆黑色猫（猫进屋好不好?）</a></li>
+                        <li class="py-2"><a href="/news/article-68701.htm" title="一片枫叶的意思和造句二年级（一片枫叶的意思和造句二年级上册）">一片枫叶的意思和造句二年级（一片枫叶的意思和造句二年级上册）</a></li>
+                        <li class="py-2"><a href="/news/article-73962.htm" title="动物注射疫苗注意事项及禁忌症是什么意思（动物疫苗使用时的注意事项有哪些）">动物注射疫苗注意事项及禁忌症是什么意思（动物疫苗使用时的注意事项有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-85019.htm" title="狗粮加工（狗粮加工厂赚钱吗）">狗粮加工（狗粮加工厂赚钱吗）</a></li>
+                        <li class="py-2"><a href="/news/article-84306.htm" title="妙三多猫三联一共几针,间隔多久（妙三多猫三联一盒几支）">妙三多猫三联一共几针,间隔多久（妙三多猫三联一盒几支）</a></li>
+                        <li class="py-2"><a href="/news/article-87904.htm" title="一件代发货源app1688（一件代发货源app）">一件代发货源app1688（一件代发货源app）</a></li>
+                        <li class="py-2"><a href="/news/article-71305.htm" title="宠物食品店名称大全集（宠物食品店名称大全集最新）">宠物食品店名称大全集（宠物食品店名称大全集最新）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-node-share.htm" title="FreeV2rayNode节点订阅每天更新20M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-65555.htm" title="动物防疫站***多少钱啊 动物防疫站***多少钱啊一次">动物防疫站***多少钱啊 动物防疫站***多少钱啊一次</a></li>
+                        <li class="py-2"><a href="/news/article-79405.htm" title="穷养布偶猫吃什么猫粮知乎（布偶猫吃什么猫粮比较好贵的）">穷养布偶猫吃什么猫粮知乎（布偶猫吃什么猫粮比较好贵的）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
