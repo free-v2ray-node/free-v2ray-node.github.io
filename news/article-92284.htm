@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-92284.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>java 拦截器响应中取所有参数,SpringBoot拦截器怎么获取http请求参数</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="1.1、获取http请求参数是一种刚需 我想有的小伙伴肯定有过获取http请求的需要，比如想 前置获取参数，统计请求数据 做服务的接口签名校验 敏感接口监控日志 敏感接口防重复提交 等等各式各样的场景" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-92284.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="java 拦截器响应中取所有参数,SpringBoot拦截器怎么获取http请求参数" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/6664282304e2313173b9a963baaa2659.webp" />
+        <meta property="og:release_date" content="2025-04-09T09:18:33" />
+    <meta property="og:updated_time" content="2025-04-09T09:18:33" />
+        <meta property="og:description" content="1.1、获取http请求参数是一种刚需 我想有的小伙伴肯定有过获取http请求的需要，比如想 前置获取参数，统计请求数据 做服务的接口签名校验 敏感接口监控日志 敏感接口防重复提交 等等各式各样的场景" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java 拦截器响应中取所有参数,SpringBoot拦截器怎么获取http请求参数">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Free V2ray Node</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>java 拦截器响应中取所有参数,SpringBoot拦截器怎么获取http请求参数</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>1.1、获取http请求参数是一种刚需</p> <p>我想有的小伙伴肯定有过获取http请求的需要，比如想</p> <p>前置获取参数，统计请求数据</p> <p>做服务的接口签名校验</p> <p>敏感接口监控日志</p> <p>敏感接口防重复提交</p> <p>等等各式各样的场景，这时你就需要获取 HTTP 请求的参数或者请求body，一般思路有两种，一种就是自定义个AOP去拦截目标方法，第二种就是使用拦截器。整体比较来说，使用拦截器更灵活些，因为每个接口的请求参数定义不同，使用AOP很难细粒度的获取到变量参数，本文主线是使用拦截器来获取HTTP请求。</p> <p>1.2、定义拦截器获取请求</p> <p>使用 spring-boot-starter-parent 2.1.9.RELEASE</p> <p>看起来这个很简单，这里就直接上code，定义个拦截器</p> <p>/**</p> <p>* @author axin</p> <p>* @summary HTTP请求拦截器</p> <p>*/</p> <p>@Slf4j</p> <p>public class RequestInterceptor implements HandlerInterceptor {<!-- --></p> <p>@Override</p> <p>public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {<!-- --></p> <p>//获取请求参数</p> <p>String queryString = request.getQueryString();</p> <p>log.info("请求参数:{}", queryString);</p> <p>//获取请求body</p> <p>byte[] bodyBytes = StreamUtils.copyToByteArray(request.getInputStream());</p> <p>String body = new String(bodyBytes, request.getCharacterEncoding());</p> <p>log.info("请求体：{}", body);</p> <p>return true;</p> <p>}</p> <p>}</p> <p>然后把这个拦截器配置一下中：</p> <p>/**</p> <p>* WebMVC配置，你可以集中在这里配置拦截器、过滤器、静态资源缓存等</p> <p>*/</p> <p>@Configuration</p> <p>public class WebMvcConfig implements WebMvcConfigurer {<!-- --></p> <p>@Override</p> <p>public void addInterceptors(InterceptorRegistry registry) {<!-- --></p> <p>registry.addInterceptor(new RequestInterceptor()).addPathPatterns("/**");</p> <p>}</p> <p>}</p> <p>定义个接口测试一下</p> <p>/**</p> <p>* @author axin</p> <p>* @summary 提交测试接口</p> <p>*/</p> <p>@Slf4j</p> <p>@RestController</p> <p>public class MyHTTPController {<!-- --></p> <p>@GetMapping("/v1/get")</p> <p>public void get(@RequestParam("one") String one,</p> <p>@RequestParam("two") BigDecimal number) {<!-- --></p> <p>log.info("参数:{},{}", one, number);</p> <p>}</p> <p>@PostMapping("/v1/post")</p> <p>public void check(@RequestBody User user) {<!-- --></p> <p>log.info("{}", JSON.toJSONString(user));</p> <p>}</p> <p>}</p> <p>GET请求获取请求参数示例：</p> <p align="center"><img decoding="async" src="0" alt="2020110711562040937.png"></p> <p>POST请求获取请求Body示例：</p> <p align="center"><img decoding="async" src="0" alt="2020110711562040938.jpg"></p> <p>我们发现拦截器在获取HTTP请求的body时出现了 400 (Required request body is missing: public void com.axin.world.controller.MyHTTPController.check(com.axin.world.domain.User))；同时也发现拦截器竟然走了两遍，这又是咋回事呢？</p> <p align="center"><img decoding="async" src="0" alt="2020110711562040939.jpg"></p> <p>1.3、为什么拦截器会重复调两遍呢？</p> <p>其实是因为 tomcat截取到异常后就转发到/error网页，就在这个转发的过程中导致了springmvc重新版开始DispatcherServlet的整个流程，所以拦截器执行了两次，我们可以看下第二次调用时的url路径：</p> <p align="center"><img decoding="async" src="0" alt="2020110711562140940.jpg"></p> <p>1.4、ServletInputStream(CoyoteInputStream) 输入流无法重复调用</p> <p>而之前出现的 Required request body is missing 错误 其实是ServletInputStream被读取后无法第二次再读取了，所以我们要把读取过的内容存下来，然后需要的时候对外提供可被重复读取的ByteArrayInputStream。</p> <p>对于MVC的过滤器来说，我们就需要重写 ServletInputStream 的 getInputStream()方法。</p> <p>1.5、自定义 HttpServletRequestWrapper</p> <p>为了 重写 ServletInputStream 的 getInputStream()方法，我们需要自定义一个 HttpServletRequestWrapper ：</p> <p>/**</p> <p>* @author Axin</p> <p>* @summary 自定义 HttpServletRequestWrapper 来包装输入流</p> <p>*/</p> <p>public class AxinHttpServletRequestWrapper extends HttpServletRequestWrapper {<!-- --></p> <p>/**</p> <p>* 缓存下来的HTTP body</p> <p>*/</p> <p>private byte[] body;</p> <p>public AxinHttpServletRequestWrapper(HttpServletRequest request) throws IOException {<!-- --></p> <p>super(request);</p> <p>body = StreamUtils.copyToByteArray(request.getInputStream());</p> <p>}</p> <p>/**</p> <p>* 重新版包装输入流</p> <p>* @return</p> <p>* @throws IOException</p> <p>*/</p> <p>@Override</p> <p>public ServletInputStream getInputStream() throws IOException {<!-- --></p> <p>InputStream bodyStream = new ByteArrayInputStream(body);</p> <p>return new ServletInputStream() {<!-- --></p> <p>@Override</p> <p>public int read() throws IOException {<!-- --></p> <p>return bodyStream.read();</p> <p>}</p> <p>/**</p> <p>* 下面的方法一般情况下不会被使用，如果你引入了一些需要使用ServletInputStream的外部组件，可以重要关注一下。</p> <p>* @return</p> <p>*/</p> <p>@Override</p> <p>public boolean isFinished() {<!-- --></p> <p>return false;</p> <p>}</p> <p>@Override</p> <p>public boolean isReady() {<!-- --></p> <p>return true;</p> <p>}</p> <p>@Override</p> <p>public void setReadListener(ReadListener readListener) {<!-- --></p> <p>}</p> <p>};</p> <p>}</p> <p>@Override</p> <p>public BufferedReader getReader() throws IOException {<!-- --></p> <p>InputStream bodyStream = new ByteArrayInputStream(body);</p> <p>return new BufferedReader(new InputStreamReader(getInputStream()));</p> <p>}</p> <p>}</p> <p>然后定义一个 DispatcherServlet子类来分派 上面自定义的 AxinHttpServletRequestWrapper ：</p> <p>/**</p> <p>* @author Axin</p> <p>* @summary 自定义 DispatcherServlet 来分派 AxinHttpServletRequestWrapper</p> <p>*/</p> <p>public class AxinDispatcherServlet extends DispatcherServlet {<!-- --></p> <p>/**</p> <p>* 包装成我们自定义的request</p> <p>* @param request</p> <p>* @param response</p> <p>* @throws Exception</p> <p>*/</p> <p>@Override</p> <p>protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {<!-- --></p> <p>super.doDispatch(new AxinHttpServletRequestWrapper(request), response);</p> <p>}</p> <p>}</p> <p>然后配置一下：</p> <p>/**</p> <p>* WebMVC配置，你可以集中在这里配置拦截器、过滤器、静态资源缓存等</p> <p>*/</p> <p>@Configuration</p> <p>public class WebMvcConfig implements WebMvcConfigurer {<!-- --></p> <p>@Override</p> <p>public void addInterceptors(InterceptorRegistry registry) {<!-- --></p> <p>registry.addInterceptor(new RequestInterceptor()).addPathPatterns("/**");</p> <p>}</p> <p>@Bean</p> <p>@Qualifier(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)</p> <p>public DispatcherServlet dispatcherServlet() {<!-- --></p> <p>return new AxinDispatcherServlet();</p> <p>}</p> <p>}</p> <p>再调用一下 POST请求：</p> <p align="center"><img decoding="async" src="0" alt="2020110711562140941.png"></p> <p>请求成功！</p> <p>1.5、总结一下 展望一下</p> <p>如果你想对HTTP请求做些骚操作，那么前置获取HTTP请求参数是前提，为此文本给出了使用MVC拦截器获取参数的样例。</p> <p>在获取HTTP Body 的时候，出现了 Required request body is missing 的错误，同时拦截器还出现执行了两遍的问题，这是因为 ServletInputStream被读取了两遍导致的，tomcat截取到异常后就转发到 /error 网页 被拦截器拦截到了，拦截器也就执行了两遍。</p> <p>为此我们通过自定义 HttpServletRequestWrapper 来包装一个可被重读读取的输入流，来达到期望的拦截效果。</p> <p>在获取到HTTP的请求参数后，我们可以前置做很多操作，比如常用的版本接口签名验证，敏感接口防重复请求等等。</p> <p>个人水平有限，如果文章有逻辑错误或表述问题还请指出，欢迎一起交流。</p> <p>到此这篇关于SpringBoot拦截器怎么获取http请求参数的文章就简介到这了,更多相关SpringBoot拦截器获取http请求参数内容请搜索乐购源码以前的文章或继续浏览下面的相关文章希望大家以后多多支持乐购源码！</p> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92282.htm">java 退出_JVM安全退出（如何优雅的关闭java服务）</a></p>
+                                        <p>下一个：<a href="/news/article-93004.htm">全国动物疫苗生产厂家（动物疫苗生产厂家建设需投资多少?）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-73296.htm" title="河南省2021年动物疫苗中标公告公布（河南省兽用疫苗中心）">河南省2021年动物疫苗中标公告公布（河南省兽用疫苗中心）</a></li>
+                        <li class="py-2"><a href="/news/article-81496.htm" title="宠康动物医院是连锁的吗还是加盟（宠康宠物）">宠康动物医院是连锁的吗还是加盟（宠康宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-83598.htm" title="宠物粮在哪里批发便宜点呢多少钱（宠物粮在哪里批发便宜点呢多少钱一吨）">宠物粮在哪里批发便宜点呢多少钱（宠物粮在哪里批发便宜点呢多少钱一吨）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-node-subscribe-links.htm" title="FreeV2rayNode节点订阅每天更新23M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新23M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-69350.htm" title="动物注射疫苗简报怎么写的啊（动物疫苗管理制度）">动物注射疫苗简报怎么写的啊（动物疫苗管理制度）</a></li>
+                        <li class="py-2"><a href="/news/article-70640.htm" title="兽用肠炎中药配方（兽用肠道消炎药首选有哪些）">兽用肠炎中药配方（兽用肠道消炎药首选有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新20.3M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.3M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-68701.htm" title="一片枫叶的意思和造句二年级（一片枫叶的意思和造句二年级上册）">一片枫叶的意思和造句二年级（一片枫叶的意思和造句二年级上册）</a></li>
+                        <li class="py-2"><a href="/news/article-89366.htm" title="宠物猫注射疫苗视频（宠物猫注射疫苗视频教学）">宠物猫注射疫苗视频（宠物猫注射疫苗视频教学）</a></li>
+                        <li class="py-2"><a href="/news/article-73295.htm" title="宠物粮食品牌代理怎么做的 宠物粮食品牌代理怎么做的呢">宠物粮食品牌代理怎么做的 宠物粮食品牌代理怎么做的呢</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
