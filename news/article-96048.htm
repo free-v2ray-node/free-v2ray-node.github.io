@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://free-v2ray-node.github.io/news/article-96048.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kubernetes集群环境初始化_云其它_</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="目录  概念  功能 k8s组件  注意三台主机都需要做  1.环境初始化 2.测试环境做etchosts的域名解析真实环境推荐使用dns做域名解析 3.集群时间必须同步，企业里推荐搭建自己的时间服务" />
+        <link href="/assets/website/img/free_v2ray_node/favicon.ico" rel="icon">
+
+    <meta name="author" content="FreeV2rayNode免费机场订阅节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://free-v2ray-node.github.io/news/article-96048.htm" />
+    <meta property="og:site_name" content="FreeV2rayNode免费机场订阅节点官网" />
+    <meta property="og:title" content="Kubernetes集群环境初始化_云其它_" />
+    <meta property="og:image" content="https://free-v2ray-node.github.io/uploads/20241108/d59d08ab80e33b085903e75c28f8bc3f.webp" />
+        <meta property="og:release_date" content="2025-04-14T08:04:37" />
+    <meta property="og:updated_time" content="2025-04-14T08:04:37" />
+        <meta property="og:description" content="目录  概念  功能 k8s组件  注意三台主机都需要做  1.环境初始化 2.测试环境做etchosts的域名解析真实环境推荐使用dns做域名解析 3.集群时间必须同步，企业里推荐搭建自己的时间服务" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Kubernetes集群环境初始化_云其它_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="/assets/website/css/free_v2ray_node/css2.css" rel="stylesheet">
+    <link href="/assets/website/css/free_v2ray_node/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/style.css">
+    <link rel="stylesheet" href="/assets/website/css/free_v2ray_node/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ4S6MFR2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NZJ4S6MFR2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--   preloder-->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!--   header start -->
+    <nav id="navbar" class="navbar nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Free V2ray Node</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> <i class="fa-solid fa-bars"></i> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--   header end -->
+    <!--        breadcum start-->
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5">
+                    <h1>Kubernetes集群环境初始化_云其它_</h1>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        breadcum end-->
+    <!--    About start-->
+    <div class="container py-0 py-sm-5 my-5 about">
+        <div class="row">
+            <div class="col-md-9">
+                                <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">概念</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">功能</a></li> <li><a href="#_lab2_0_1" rel="nofollow">k8s组件</a></li> </ul> <li><a href="#_label1" rel="nofollow">注意三台主机都需要做</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_2" rel="nofollow">1.环境初始化</a></li> <li><a href="#_lab2_1_3" rel="nofollow">2.测试环境做etchosts的域名解析真实环境推荐使用dns做域名解析</a></li> <li><a href="#_lab2_1_4" rel="nofollow">3.集群时间必须同步，企业里推荐搭建自己的时间服务器</a></li> <li><a href="#_lab2_1_5" rel="nofollow">4.禁用iptables与firewalld 生产环境防火墙一定要慎重</a></li> <li><a href="#_lab2_1_6" rel="nofollow">5.禁用selinux</a></li> <li><a href="#_lab2_1_7" rel="nofollow">6.禁用swap分区</a></li> <li><a href="#_lab2_1_8" rel="nofollow">7.修改linux内核参数</a></li> <li><a href="#_lab2_1_9" rel="nofollow">8.配置ipvs功能</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>概念</h2> <p>k8s/kubernetes<br />容器化部署<br />解决容器编排问题，kubernetes为容器编排软件的佼佼者<br />kubernets为一组服务器集群</p> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>功能</h3> <p>自我修复 一个容器崩溃，另一个容器起来<br />弹性伸缩 根据需要调整容器数量<br />服务发现 自动发现的形式找到所需依赖<br />负载均衡 一起分担流量<br />版本回退 新版本有问题，立马回退到原来的版本<br />存储编排 可以根据容器自身的需求自动创建存储卷<br />....</p> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>k8s组件</h3> <p>k8s为控制节点 和 工作节点组成。<br />master节点的组件<br />负责集群的管理<br />ApiServer：资源操作的唯一路口 接受命令，管理操作都是通过这个路口<br />Scheduler：负责根据算法，把活分给谁干？<br />ControllerManager：调度安排干活<br />Etcd：监工记录谁在干活做了什么<br />node节点的组件<br />负责提供运行环境<br />kubelet：接受控制节点过来的信息，安排干活，控制docker操作<br />kubeproxy：提供对外访问，跑了程序访问程序。<br />docker：负责操作</p> <p>用实例nginx来说明组件调度关系<br />master和node信息都存在etcd里来明确控制节点手下有几个干活的<br />让服务跑在k8s，apiserver接受命令<br />开始计算服务请求由谁来完成，通过读node信息<br />知道由谁来完成，则使用controller-manager发送请求<br />kubelet等着接活的，安排给docker启动一个prod。（目前prod和docker一回事，都是启动程序的。prod为容器最小单元）<br />kubeproxy外面用户可以访问nignx了</p> <p>master：集群控制节点至少一台<br />node：工作负载节点，做事的<br />pod：kubernets最小存储单元，容器运行在pod中，一个pod有多个容器（通过控制pod来控制容器进而控制程序）<br />controller：启动pod停止pod伸缩pod<br />service：对外服务的统一路口下面可以维护同一类的多个pod。流量流向谁呢？<br />label：对pod进行分类同一类pod打上标签，service通过标签来控制流量<br />namespace：隔离pod的运行环境</p> <p>集群环境规划<br />集群分两类一主多从，多主多从<br />一主多从，服务器要是宕机了怎么办？集群就完全完蛋了。只能是测试环境<br />多主多从，安全性非常高？搭建麻烦，适合生产环境</p> <p>minikube 一个用于单节点测试<br />kubeadm 快速搭建kubernets集群<br />二进制包 依次下载组件编译安装，组件之间要产生证书</p> <p>环境搭建 选用vm虚拟三台服务器<br />能互通网络，修改主机名</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>注意三台主机都需要做</h2> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>1.环境初始化</h3> <p>centos需要在7.5以上</p> <p><code>cat /etc/redhat-release</code></p> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>2.测试环境做etchosts的域名解析真实环境推荐使用dns做域名解析</h3> <p>192.168.100.128 master master.example.com<br />192.168.100.130 node1 node1.example.com<br />192.168.100.129 node2 node2.example.com</p> <p class="maodian"><a name="_lab2_1_4" rel="nofollow"></a></p> <h3>3.集群时间必须同步，企业里推荐搭建自己的时间服务器</h3> <p><code>systemctl start chronyd</code></p> <p><code>date</code></p> <p class="maodian"><a name="_lab2_1_5" rel="nofollow"></a></p> <h3>4.禁用iptables与firewalld 生产环境防火墙一定要慎重</h3> <p>Kubernetes和Docker会产生大量iptables规则，为了不让系统规则与之混淆，直接关闭系统的规则<br /><code>systemctl --now disable firewalld</code><br /><code>systemctl stop iptables</code><br /><code>systemctl disable iptables</code><br />（我没有iptables）</p> <p class="maodian"><a name="_lab2_1_6" rel="nofollow"></a></p> <h3>5.禁用selinux</h3> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/c4d9b4065fd29ce4f4eed11b2b4ee111.jpg"></p> <p class="maodian"><a name="_lab2_1_7" rel="nofollow"></a></p> <h3>6.禁用swap分区</h3> <p>虚拟内存分区 物理内存使用完了，可以将物理空间虚拟成内存。启用swap设备会对系统的性能产生非常负面的影响。也可以告诉kubernetes我非要开这个分区</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/3e19a22c1e26049d080d9e4445d1bb87.jpg"></p> <p class="maodian"><a name="_lab2_1_8" rel="nofollow"></a></p> <h3>7.修改linux内核参数</h3> <p>Kubernetes强制要求你这么做 添加网桥过滤和地址转发功能</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/f6c8325a2f469f8dbbf19b680485081a.jpg"></p> <p>重载配置<br /><code>sysctl -p</code><br />加载网桥过滤模块<br /><code>modprobe br_netfilter</code><br />查看网桥过滤模块是否加载成功</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/2a3b5760b12856e8c8e215722c5281df.jpg"></p> <p class="maodian"><a name="_lab2_1_9" rel="nofollow"></a></p> <h3>8.配置ipvs功能</h3> <p>Service 做接口暴露 负载均衡 反向代理 一种iptables 一种ipvs 相比较ipvs性能明显高 需要手动载入ipvs模块<br />安装ipvsadm ipset</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/f8ffc520a27773bb14d5485e198456e3.jpg"></p> <p>添加shell脚本，功能为加载模块</p> <div class="ay1code"> <pre class="brush:bash;">  [root@master ~]# cat &gt; /etc/sysconfig/modules/ipvs.modules &lt;&lt; q     &gt; #!/bin/bash    &gt; modprobe -- ip-vs    &gt; modprobe -- ip_vs_rr    &gt; modprobe -- ip_vs_wrr    &gt; modprobe -- ip_vs_sh    &gt; modprobe -- nf_conntrack_ipv4    &gt; q</pre> </div> <p>为ipvs的内容</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/13d1a7824939b997292360947eced262.jpg"></p> <p> </p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/2e0c91c5227b88bb687fcff1a1e1d45d.jpg"></p> <p>查看对应模块是否加载成功<br />Centos版本太高导致报错<br />modprobe: FATAL: Module nf_conntrack_ipv4 not found in directory /lib/modules/4.18.0-373.el8.x86_64<br />解决报错</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/8b11bd1c705ade6b7ca5fef9151c49c4.jpg"></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/6da7db378210d06c346c3e82864dcb95.jpg"></p> <p>成功加载模块</p> <p>注意三台服务器都要做<br />最后重启</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/03cf00f5971e406fbbe3dbad515c8ac5.jpg"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95274.htm">兽用疫苗保存温度要求多少（兽用疫苗保存方法）</a></p>
+                                        <p>下一个：<a href="/news/article-96050.htm">宠福鑫动物医院怎么样北京（宠福鑫动物医院亦庄完全分院）</a></p>
+                                    </div>
+                            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-node-subscribe-links.htm" title="FreeV2rayNode节点订阅每天更新18.5M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.5M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-95273.htm" title="宠物领养网站html模板下载安装手机版（宠物领养网站html模板下载安装手机版大全）">宠物领养网站html模板下载安装手机版（宠物领养网站html模板下载安装手机版大全）</a></li>
+                        <li class="py-2"><a href="/news/article-66167.htm" title="延吉市宠物医院 延吉市宠物医院哪家好">延吉市宠物医院 延吉市宠物医院哪家好</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-node-share-links.htm" title="FreeV2rayNode节点订阅每天更新22.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.4M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-93004.htm" title="全国动物疫苗生产厂家（动物疫苗生产厂家建设需投资多少?）">全国动物疫苗生产厂家（动物疫苗生产厂家建设需投资多少?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-free-subscribe-node.htm" title="FreeV2rayNode节点订阅每天更新22.1M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.1M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-73963.htm" title="山东省动物防疫条例（山东省动物防疫条例全文）">山东省动物防疫条例（山东省动物防疫条例全文）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-node-share.htm" title="FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-82877.htm" title="丹阳宠物网（丹阳卖宠物的地方便宜）">丹阳宠物网（丹阳卖宠物的地方便宜）</a></li>
+                        <li class="py-2"><a href="/news/article-71961.htm" title="济南美联众合动物医院领秀城电话（美联众合动物医院地址）">济南美联众合动物医院领秀城电话（美联众合动物医院地址）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">43</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <!--    About end-->
+        <!--    footer star -->
+    <div class="footer">
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    footer end  -->
+    <script src="/assets/website/js/frontend/free_v2ray_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/jquery.min.js"></script>
+    <!-- owl carousel-->
+    <script src="/assets/website/js/frontend/free_v2ray_node/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/free_v2ray_node/script.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
