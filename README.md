@@ -1,4 +1,4 @@
-# FreeV2rayNode节点订阅每天更新19.1M/S免费节点订阅链接地址  更新时间 2025-06-06 09:26:42
+# FreeV2rayNode节点订阅每天更新22.8M/S免费节点订阅链接地址  更新时间 2025-06-10 08:54:37
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://free-v2ray-node.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://free-v2ray-node.github.io/uploads/2025/06/0-20250606.yaml
-- https://free-v2ray-node.github.io/uploads/2025/06/1-20250606.yaml
-- https://free-v2ray-node.github.io/uploads/2025/06/2-20250606.yaml
-- https://free-v2ray-node.github.io/uploads/2025/06/3-20250606.yaml
-- https://free-v2ray-node.github.io/uploads/2025/06/4-20250606.yaml
+- https://free-v2ray-node.github.io/uploads/2025/06/0-20250610.yaml
+- https://free-v2ray-node.github.io/uploads/2025/06/1-20250610.yaml
+- https://free-v2ray-node.github.io/uploads/2025/06/2-20250610.yaml
+- https://free-v2ray-node.github.io/uploads/2025/06/3-20250610.yaml
+- https://free-v2ray-node.github.io/uploads/2025/06/4-20250610.yaml
 
 ### V2ray订阅链接
 
-- https://free-v2ray-node.github.io/uploads/2025/06/0-20250606.txt
-- https://free-v2ray-node.github.io/uploads/2025/06/1-20250606.txt
-- https://free-v2ray-node.github.io/uploads/2025/06/2-20250606.txt
-- https://free-v2ray-node.github.io/uploads/2025/06/3-20250606.txt
-- https://free-v2ray-node.github.io/uploads/2025/06/4-20250606.txt
+- https://free-v2ray-node.github.io/uploads/2025/06/0-20250610.txt
+- https://free-v2ray-node.github.io/uploads/2025/06/1-20250610.txt
+- https://free-v2ray-node.github.io/uploads/2025/06/2-20250610.txt
+- https://free-v2ray-node.github.io/uploads/2025/06/3-20250610.txt
+- https://free-v2ray-node.github.io/uploads/2025/06/4-20250610.txt
 
 ### Sing-box订阅链接
 
-- https://free-v2ray-node.github.io/uploads/2025/06/20250606.json
+- https://free-v2ray-node.github.io/uploads/2025/06/20250610.json
 
 ## 更多clash节点订阅 ：
 
