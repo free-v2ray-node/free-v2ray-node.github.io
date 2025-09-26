@@ -67,7 +67,7 @@
     <nav id="navbar" class="navbar nav navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="/">
-                                <span>Free V2ray Node</span>
+                                <span>Free V2ray Node 节点平台</span>
                             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> <i class="fa-solid fa-bars"></i> </span>
@@ -99,7 +99,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 pt-5">
-                    <h1>8月15日免费VPN订阅 | 2025年20.8M/S|SSR/V2ray/Shadowrocket/Clash免费节点链接地址</h1>
+                    <h1>8月15日免费VPN订阅 | 2025年20.8M/S|SSR/V2ray节点/Shadowrocket节点/Clash免费节点链接地址</h1>
                     <ul>
                         <li><a href="/">首页</a></li>
                         <li><a href="/free-nodes/">免费节点</a></li>
@@ -139,8 +139,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅文件链接</h2><p>&nbsp;</p><p><strong>Clash订阅链接</strong></p><p>https://mianfeivpn.github.io/uploads/2025/08/0-20250815.yaml</p><p>https://mianfeivpn.github.io/uploads/2025/08/1-20250815.yaml</p><p>https://mianfeivpn.github.io/uploads/2025/08/4-20250815.yaml</p><p>&nbsp;</p><p><strong>V2ray订阅链接:</strong></p><p>https://mianfeivpn.github.io/uploads/2025/08/0-20250815.txt</p><p>https://mianfeivpn.github.io/uploads/2025/08/2-20250815.txt</p><p><strong>Sing-Box订阅链接</strong></p><p>https://mianfeivpn.github.io/uploads/2025/08/20250815.json</p><h2>使用必看</h2><p>&nbsp;</p><p>全部节点信息均来自互联网收集，且用且珍惜，推荐机场：「<a href="javascript:;" class="js_to" data-url="https://muguacloud.top/#/register?code=" data-type="Mugua" data-code="MQag6brk" rel="nofollow noopener" style="color:#c00;">木瓜云</a> 」。仅针对用于学习研究的用户分享，请勿随意传播其他信息。免费节点有效时间比较短，遇到失效是正常现象。</p><h2>全面解析Clash订阅转换工具：原理、功能与实战应用指南</h2>  <h2>引言：为何需要订阅转换工具？</h2>  <p>在当今复杂的网络环境中，科学上网已成为许多用户的刚需。然而，不同代理服务商提供的订阅链接格式各异（如SS、Vmess、Trojan等），而Clash作为一款多协议代理客户端，仅支持特定的YAML配置文件格式。这种"语言不通"的问题，正是Clash订阅转换工具诞生的意义——它如同一位专业的"翻译官"，将杂乱无章的订阅链接转化为Clash能理解的规则，让用户无需手动编写复杂的配置文件即可享受无缝代理体验。  </p>  <hr />  <h2>一、Clash核心功能解析</h2>  <h3>1.1 多协议支持能力</h3>  <p>Clash之所以成为代理工具中的"瑞士军刀"，源于其对Vmess、ShadowSocks、HTTP/Socks5等协议的广泛兼容。例如，当用户同时使用机场的V2Ray节点和自建的SSR服务器时，Clash可通过统一的界面进行管理，避免频繁切换客户端的麻烦。  </p>  <h3>1.2 智能流量分流机制</h3>  <p>通过<code>Rule-Based</code>路由规则，用户可以实现：<br /> - 国内直连（DIRECT）<br /> - 广告屏蔽（REJECT）<br /> - 按域名/IP指定代理组（Proxy Group）<br /> 实测显示，合理配置的分流规则可降低30%以上的无效代理流量消耗。  </p>  <h3>1.3 动态配置管理</h3>  <p>支持通过<code>providers</code>从远程订阅链接自动更新节点，配合转换工具可实现"一次配置，长期生效"的懒人模式。  </p>  <hr />  <h2>二、订阅转换工具核心技术剖析</h2>  <h3>2.1 格式转换原理</h3>  <p>工具内部通过正则表达式匹配原始链接的加密方式（如AES-256-GCM）、传输协议（WS/TCP）等参数，将其映射为Clash的YAML字段。例如：<br /> ```python  </p>  <h1>原始SS链接示例  <p>ss://YWVzLTI1Ni1nY206dGVzdA==@server.com:8888#备注  </p>  <h1>转换后Clash配置  <ul> <li>name: "备注"<br /> type: ss<br /> server: server.com<br /> port: 8888<br /> cipher: aes-256-gcm<br /> ```  </li> </ul>  <h3>2.2 特色功能对比</h3>  <p>| 功能               | 普通订阅链接 | 转换后Clash配置 |<br /> |--------------------|-------------|----------------|<br /> | 多协议混合支持      | ❌           | ✔️              |<br /> | 自定义规则组        | ❌           | ✔️              |<br /> | 本地/远程规则结合   | ❌           | ✔️              |  </p>  <hr />  <h2>三、手把手实战教学</h2>  <h3>3.1 环境搭建（Windows示例）</h3>  <ol> <li><strong>安装Python 3.8+</strong>：官网下载时勾选<code>Add to PATH</code>  </li> <li><strong>获取转换工具</strong>：<br /> <code>bash   git clone https://github.com/subconverter/subconverter   cd subconverter &amp; pip install -r requirements.txt</code>  </li> <li><strong>启动Web界面</strong>：<br /> <code>bash   python main.py --port=8080</code>  </li> </ol>  <h3>3.2 典型转换案例</h3>  <p><strong>场景</strong>：将机场提供的V2Ray订阅转换为Clash规则<br /> 1. 访问<code>http://localhost:8080</code><br /> 2. 在输入框粘贴订阅链接<br /> 3. 选择目标格式为<code>Clash Premium</code><br /> 4. 点击"生成配置"后下载<code>config.yaml</code>  </p>  <h3>3.3 高级定制技巧</h3>  <p>在生成的配置中添加：<br /> <code>yaml   rules:     - DOMAIN-SUFFIX,google.com,PROXY  # 强制谷歌走代理     - IP-CIDR,192.168.1.0/24,DIRECT   # 局域网直连   proxy-groups:     - name: "负载均衡"       type: load-balance       proxies: ["节点1", "节点2"]</code>  </p>  <hr />  <h2>四、常见问题解决方案</h2>  <h3>4.1 链接失效错误</h3>  <ul> <li><strong>现象</strong>：转换后节点无法连接  </li> <li><strong>排查步骤</strong>：    <ol> <li>检查原始链接是否过期  </li> <li>使用<code>base64解码工具</code>验证内容  </li> <li>对比转换前后的服务器端口/密码字段  </li> </ol></li> </ul>  <h3>4.2 规则冲突处理</h3>  <p>当多条规则匹配同一域名时，Clash按从上到下的顺序执行。建议：<br /> <code>geoip:cn,DIRECT   # 先放行国内IP   DOMAIN-KEYWORD,netflix,PROXY  # 再处理特殊需求</code>  </p>  <hr />  <h2>五、安全与效率优化建议</h2>  <h3>5.1 安全防护</h3>  <ul> <li>避免使用第三方在线转换服务（可能记录订阅链接）  </li> <li>定期审计配置文件中的<code>external-controller</code>字段，防止API端口暴露  </li> </ul>  <h3>5.2 性能调优</h3>  <ul> <li>启用<code>tun模式</code>提升UDP兼容性  </li> <li>对延迟高的节点设置健康检查：<br /> <code>yaml   url: 'http://www.gstatic.com/generate_204'   interval: 300</code>  </li> </ul>  <hr />  <h2>结语：工具背后的网络自由哲学</h2>  <p>Clash订阅转换工具的价值远不止于技术实现——它象征着对网络资源民主化的追求。通过降低配置门槛，让普通用户也能驾驭复杂的代理规则，这正是互联网开放精神的体现。正如一位开发者所言："我们不是在制造工具，而是在拆除围墙。"  </p>  <blockquote>   <p><strong>精彩点评</strong>：<br />   本文以技术为骨、体验为肉，既深入解析了订阅转换的代码级原理，又通过可视化对比表格和实战案例让抽象概念落地。特别在"安全建议"部分，一针见血地指出隐私保护要点，体现了专业性与人文关怀的结合。文中诸如"瑞士军刀"、"拆除围墙"等比喻，巧妙地将冷冰冰的技术术语转化为有温度的表达，使读者在获取知识的同时，也能感受到技术背后的价值主张。</p> </blockquote>                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/free-nodes/2025-8-14-free-node-subscribe.htm">8月14日免费VPN订阅 | 2025年20.4M/S|SSR/Clash/Shadowrocket/V2ray免费节点链接地址</a></p>
-                                        <p>下一个：<a href="/free-nodes/2025-8-16-vpn-github.htm">8月16日免费VPN订阅 | 2025年18.9M/S|Clash/SSR/V2ray/Shadowrocket免费节点链接地址</a></p>
+                                        <p>上一个：<a href="/free-nodes/2025-8-14-free-node-subscribe.htm">8月14日免费VPN订阅 | 2025年20.4M/S|SSR/Clash节点/Shadowrocket节点/V2ray免费节点链接地址</a></p>
+                                        <p>下一个：<a href="/free-nodes/2025-8-16-vpn-github.htm">8月16日免费VPN订阅 | 2025年18.9M/S|Clash节点/SSR/V2ray节点/Shadowrocket免费节点链接地址</a></p>
                                     </div>
                                 <div class="panel panel-default mt-5">
                     <div class="panel-heading">
@@ -148,16 +148,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                     </div>
                     <div class="panel-body">
                         <ul class="p-0 x-0">
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-node-subscribe.htm">8月14日免费VPN订阅 | 2025年20.4M/S|SSR/Clash/Shadowrocket/V2ray免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-vpn-node.htm">8月13日免费VPN订阅 | 2025年20.4M/S|Clash/SSR/Shadowrocket/V2ray免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-12-free-node-subscribe.htm">8月12日免费VPN订阅 | 2025年21.3M/S|Shadowrocket/SSR/Clash/V2ray免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-11-vpn-free.htm">8月11日免费VPN订阅 | 2025年20.5M/S|V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-10-top-vpn-node.htm">8月10日免费VPN订阅 | 2025年18.6M/S|Clash/Shadowrocket/SSR/V2ray免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-9-vpn-free.htm">8月9日免费VPN订阅 | 2025年21.5M/S|Clash/V2ray/Shadowrocket/SSR免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-8-vpn-github.htm">8月8日免费VPN订阅 | 2025年20.1M/S|Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-7-vpn-github.htm">8月7日免费VPN订阅 | 2025年21.8M/S|V2ray/Shadowrocket/Clash/SSR免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-6-vpn-proxy.htm">8月6日免费VPN订阅 | 2025年18.1M/S|V2ray/SSR/Shadowrocket/Clash免费节点链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-5-free-node-subscribe-links.htm">8月5日免费VPN订阅 | 2025年19.2M/S|Clash/Shadowrocket/SSR/V2ray免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-node-subscribe.htm">8月14日免费VPN订阅 | 2025年20.4M/S|SSR/Clash节点/Shadowrocket节点/V2ray免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-vpn-node.htm">8月13日免费VPN订阅 | 2025年20.4M/S|Clash节点/SSR/Shadowrocket节点/V2ray免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-12-free-node-subscribe.htm">8月12日免费VPN订阅 | 2025年21.3M/S|Shadowrocket节点/SSR/Clash节点/V2ray免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-11-vpn-free.htm">8月11日免费VPN订阅 | 2025年20.5M/S|V2ray节点/SSR/Clash节点/Shadowrocket免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-10-top-vpn-node.htm">8月10日免费VPN订阅 | 2025年18.6M/S|Clash节点/Shadowrocket节点/SSR/V2ray免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-9-vpn-free.htm">8月9日免费VPN订阅 | 2025年21.5M/S|Clash节点/V2ray节点/Shadowrocket节点/SSR免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-8-vpn-github.htm">8月8日免费VPN订阅 | 2025年20.1M/S|Clash节点/V2ray节点/SSR/Shadowrocket免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-7-vpn-github.htm">8月7日免费VPN订阅 | 2025年21.8M/S|V2ray节点/Shadowrocket节点/Clash节点/SSR免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-6-vpn-proxy.htm">8月6日免费VPN订阅 | 2025年18.1M/S|V2ray节点/SSR/Shadowrocket节点/Clash免费节点链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-5-free-node-subscribe-links.htm">8月5日免费VPN订阅 | 2025年19.2M/S|Clash节点/Shadowrocket节点/SSR/V2ray免费节点链接地址</a></li>
                                                     </ul>
                     </div>
                 </div>
@@ -169,16 +169,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-7-vpn-github.htm" title="8月7日免费VPN订阅 | 2025年21.8M/S|V2ray/Shadowrocket/Clash/SSR免费节点链接地址">8月7日免费VPN订阅 | 2025年21.8M/S|V2ray/Shadowrocket/Clash/SSR免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-26-vpn-proxy.htm" title="7月26日免费VPN订阅 | 2025年18.2M/S|Shadowrocket/SSR/Clash/V2ray免费节点链接地址">7月26日免费VPN订阅 | 2025年18.2M/S|Shadowrocket/SSR/Clash/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-1-free-node-subscribe.htm" title="8月1日免费VPN订阅 | 2025年20.6M/S|Clash/V2ray/SSR/Shadowrocket免费节点链接地址">8月1日免费VPN订阅 | 2025年20.6M/S|Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-7-free-vpn.htm" title="7月7日免费VPN订阅 | 2025年22.2M/S|V2ray/SSR/Clash/Shadowrocket免费节点链接地址">7月7日免费VPN订阅 | 2025年22.2M/S|V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-19-free-node-subscribe-links.htm" title="8月19日免费VPN订阅 | 2025年19.6M/S|Clash/V2ray/SSR/Shadowrocket免费节点链接地址">8月19日免费VPN订阅 | 2025年19.6M/S|Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-21-node-share.htm" title="8月21日免费VPN订阅 | 2025年18.8M/S|Clash节点/SSR/V2ray节点/Shadowrocket免费节点链接地址">8月21日免费VPN订阅 | 2025年18.8M/S|Clash节点/SSR/V2ray节点/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-8-free-high-speed-nodes.htm" title="FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-9-node-share-links.htm" title="FreeV2rayNode节点订阅每天更新21.8M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.8M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-20-free-high-speed-nodes.htm" title="FreeV2rayNode节点订阅每天更新21M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-vpn-node.htm" title="8月13日免费VPN订阅 | 2025年20.4M/S|Clash节点/SSR/Shadowrocket节点/V2ray免费节点链接地址">8月13日免费VPN订阅 | 2025年20.4M/S|Clash节点/SSR/Shadowrocket节点/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-25-node-share.htm" title="FreeV2rayNode节点订阅每天更新19.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.4M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-26-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新21.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.4M/S免费节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-19-free-node-subscribe-links.htm" title="8月19日免费VPN订阅 | 2025年19.6M/S|Clash节点/V2ray节点/SSR/Shadowrocket免费节点链接地址">8月19日免费VPN订阅 | 2025年19.6M/S|Clash节点/V2ray节点/SSR/Shadowrocket免费节点链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-8-22-free-node-subscribe-links.htm" title="FreeV2rayNode节点订阅每天更新21.8M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.8M/S免费节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-13-mianfei-vpn.htm" title="7月13日免费VPN订阅 | 2025年18.7M/S|V2ray/SSR/Shadowrocket/Clash免费节点链接地址">7月13日免费VPN订阅 | 2025年18.7M/S|V2ray/SSR/Shadowrocket/Clash免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-16-vpn-github.htm" title="8月16日免费VPN订阅 | 2025年18.9M/S|Clash/SSR/V2ray/Shadowrocket免费节点链接地址">8月16日免费VPN订阅 | 2025年18.9M/S|Clash/SSR/V2ray/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-20-top-vpn-node.htm" title="8月20日免费VPN订阅 | 2025年19.1M/S|Shadowrocket/SSR/Clash/V2ray免费节点链接地址">8月20日免费VPN订阅 | 2025年19.1M/S|Shadowrocket/SSR/Clash/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-28-node-share-links.htm" title="7月28日免费VPN订阅 | 2025年22.3M/S|Shadowrocket/SSR/V2ray/Clash免费节点链接地址">7月28日免费VPN订阅 | 2025年22.3M/S|Shadowrocket/SSR/V2ray/Clash免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-1-free-node-subscribe-links.htm" title="FreeV2rayNode节点订阅每天更新22.5M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.5M/S免费节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -190,10 +190,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -208,7 +208,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         <div class="container">
             <div class="row pt-3">
                 <div class="col-lg-12 text-center">
-                                        <p>
+                                        <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -219,7 +220,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                    <p class="mb-0">
+                                        <p class="mb-0">
                         <a href="/">FreeV2rayNode免费机场订阅节点官网</a> 版权所有 Powered by WordPress
                     </p>
                 </div>
