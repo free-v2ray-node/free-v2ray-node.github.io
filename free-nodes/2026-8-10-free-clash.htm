@@ -278,19 +278,9 @@ A4：可能原因包括：代理设置错误、所用节点被封锁、浏览器
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
+    <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
     <div class="panel-body">
-        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
-    <div class="panel-body">
-        管理员可设置每个用户上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的节点延迟过高怎么办？</h5></div>
-    <div class="panel-body">
-        可通过策略组切换低延迟节点，或调整传输协议和端口。检查服务器网络和防火墙设置，确保网络通畅。必要时可启用 MUX 功能减少短连接延迟，提高整体网络体验。<hr />    </div>
+        减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 能否直接读取 Clash 配置？</h5></div>
@@ -303,14 +293,14 @@ A4：可能原因包括：代理设置错误、所用节点被封锁、浏览器
         选择 AEAD 或协议插件可提升安全性，混淆方式如 tls1.2_ticket_auth 可以模拟正常 HTTPS 流量。合理搭配协议和混淆参数，能够有效抵御 DPI 检测和流量封锁。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现域名精确分流？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
     <div class="panel-body">
-        Sing-box 支持按域名匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可自动选择最优节点，提高访问速度和网络稳定性，实现精确流量管理。<hr />    </div>
+        管理员可设置每个用户上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
+    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
     <div class="panel-body">
-        减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
+        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 节点延迟排序如何结合策略组使用？</h5></div>
@@ -318,14 +308,24 @@ A4：可能原因包括：代理设置错误、所用节点被封锁、浏览器
         Matsuri 会定期测速节点延迟，通过策略组自动选择低延迟、高稳定性的节点处理不同流量。无需手动切换，确保网页浏览、视频播放和游戏访问顺畅。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
-    <div class="panel-body">
-        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow 使用透明代理时如何避免 DNS 泄露？</h5></div>
     <div class="panel-body">
-        在 Mellow 中启用 fake-ip 或内置 DNS 解析功能，并将上游 DNS 指定为 DoH/DoT 服务，确保所有 DNS 请求通过代理转发而非本地解析，从而避免 ISP 或本地网络捕获实际访问域名。    </div>
+        在 Mellow 中启用 fake-ip 或内置 DNS 解析功能，并将上游 DNS 指定为 DoH/DoT 服务，确保所有 DNS 请求通过代理转发而非本地解析，从而避免 ISP 或本地网络捕获实际访问域名。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的节点延迟过高怎么办？</h5></div>
+    <div class="panel-body">
+        可通过策略组切换低延迟节点，或调整传输协议和端口。检查服务器网络和防火墙设置，确保网络通畅。必要时可启用 MUX 功能减少短连接延迟，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现域名精确分流？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持按域名匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可自动选择最优节点，提高访问速度和网络稳定性，实现精确流量管理。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
+    <div class="panel-body">
+        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -373,16 +373,16 @@ A4：可能原因包括：代理设置错误、所用节点被封锁、浏览器
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新18.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.6M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-18-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新18.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.2M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-7.htm" title="FreeV2rayNode节点订阅每天更新18.5M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.5M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-27-free-node-subscribe-links.htm" title="FreeV2rayNode节点订阅每天更新21M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-4-free-shadowrocket-node.htm" title="FreeV2rayNode节点订阅每天更新20.3M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.3M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-13-free-clash-subscribe.htm" title="FreeV2rayNode节点订阅每天更新20.5M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.5M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-1.htm" title="FreeV2rayNode节点订阅每天更新21.9M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.9M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-6-clash-node.htm" title="FreeV2rayNode节点订阅每天更新23M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新23M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-8-3.htm" title="FreeV2rayNode节点订阅每天更新20.9M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.9M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-28-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-14-free-clash.htm" title="FreeV2rayNode节点订阅每天更新21.3M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.3M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-23.htm" title="FreeV2rayNode节点订阅每天更新21.7M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.7M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-2-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新21.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.4M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-31.htm" title="FreeV2rayNode节点订阅每天更新22.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.6M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-8-29.htm" title="FreeV2rayNode节点订阅每天更新21.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.6M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-3.htm" title="FreeV2rayNode节点订阅每天更新21.7M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.7M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-22-free-clash.htm" title="FreeV2rayNode节点订阅每天更新18.1M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.1M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-25.htm" title="FreeV2rayNode节点订阅每天更新22.9M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.9M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-9.htm" title="FreeV2rayNode节点订阅每天更新19.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.4M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-8-21.htm" title="FreeV2rayNode节点订阅每天更新20M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20M/S免费节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -394,10 +394,10 @@ A4：可能原因包括：代理设置错误、所用节点被封锁、浏览器
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
