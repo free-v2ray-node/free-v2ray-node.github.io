@@ -371,9 +371,9 @@ A：可以。使用 Clash Meta、Clash Classic 等免费内核版本，不存在
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的路由规则如何实现国内直连？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的 DNS 模块如何提升解析速度？</h5></div>
     <div class="panel-body">
-        通过配置域名列表或 IP 段，将国内流量指向直连出口，而国外流量走代理节点。结合策略组和定期更新规则，可保持国内访问速度，同时优化海外访问体验。<hr />    </div>
+        V2Ray 内置 DNS 模块支持并行解析，可同时请求多个上游 DNS 服务器。用户可配置本地优先解析或远程解析策略，从而减少域名污染与延迟问题。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 的分流规则支持哪些条件？</h5></div>
@@ -381,24 +381,14 @@ A：可以。使用 Clash Meta、Clash Classic 等免费内核版本，不存在
         支持按域名、IP 地址、端口、请求路径、协议类型或关键词进行分流。结合策略组，可实现广告屏蔽、视频加速、游戏优化等多种自定义网络策略。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 在丢包环境下如何配置更稳？</h5></div>
+    <div class="panel-body">
+        可调整 Hysteria2 的拥塞控制与重传参数，启用 FEC（前向纠错）并合理设置 MTU 与窗口大小以适应链路特性。还可尝试切换 QUIC 参数或更换中转以减少丢包影响。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的 Proxy Group 能实现哪些策略？</h5></div>
     <div class="panel-body">
         Proxy Group 可以定义多种策略，如按延迟选择、随机、轮询或手动选择节点。结合分流规则，可实现针对不同网站或应用的智能代理，提高网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Quantumult X 支持 VLESS 吗？</h5></div>
-    <div class="panel-body">
-        Quantumult X 目前官方未原生支持 VLESS，但通过手动修改配置或第三方脚本可实现兼容。若主要使用 VLESS 协议，可考虑使用 Sing-box 或 Shadowrocket 作为替代。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray QUIC 传输适合什么网络环境？</h5></div>
-    <div class="panel-body">
-        QUIC 基于 UDP 支持多路复用和零握手，降低延迟，提高吞吐量。适合高丢包、不稳定网络环境，可保证视频、游戏和即时通讯流量的稳定性和流畅体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何给 Clash 或 Sing-box 添加本地广告屏蔽规则？</h5></div>
-    <div class="panel-body">
-        可导入公共广告域名列表（如 ads、trackers）并将其指向 `REJECT` 或 `DIRECT`（根据需求）；还可以使用 rule-provider 自动更新广告规则，并结合 hosts 或 DNS 层面进行联合拦截以提升屏蔽效果。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 如何启用 TUN 模式？</h5></div>
@@ -406,14 +396,24 @@ A：可以。使用 Clash Meta、Clash Classic 等免费内核版本，不存在
         在 Mihomo 的配置文件中启用 `tun:` 模块并安装系统驱动即可实现全局代理。TUN 模式可将所有系统流量导向代理核心，实现真正意义上的全局加速。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 在丢包环境下如何配置更稳？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的路由规则如何实现国内直连？</h5></div>
     <div class="panel-body">
-        可调整 Hysteria2 的拥塞控制与重传参数，启用 FEC（前向纠错）并合理设置 MTU 与窗口大小以适应链路特性。还可尝试切换 QUIC 参数或更换中转以减少丢包影响。<hr />    </div>
+        通过配置域名列表或 IP 段，将国内流量指向直连出口，而国外流量走代理节点。结合策略组和定期更新规则，可保持国内访问速度，同时优化海外访问体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 DNS 模块如何提升解析速度？</h5></div>
+    <div class="panel-heading"><h5>Quantumult X 支持 VLESS 吗？</h5></div>
     <div class="panel-body">
-        V2Ray 内置 DNS 模块支持并行解析，可同时请求多个上游 DNS 服务器。用户可配置本地优先解析或远程解析策略，从而减少域名污染与延迟问题。<hr />    </div>
+        Quantumult X 目前官方未原生支持 VLESS，但通过手动修改配置或第三方脚本可实现兼容。若主要使用 VLESS 协议，可考虑使用 Sing-box 或 Shadowrocket 作为替代。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何给 Clash 或 Sing-box 添加本地广告屏蔽规则？</h5></div>
+    <div class="panel-body">
+        可导入公共广告域名列表（如 ads、trackers）并将其指向 `REJECT` 或 `DIRECT`（根据需求）；还可以使用 rule-provider 自动更新广告规则，并结合 hosts 或 DNS 层面进行联合拦截以提升屏蔽效果。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray QUIC 传输适合什么网络环境？</h5></div>
+    <div class="panel-body">
+        QUIC 基于 UDP 支持多路复用和零握手，降低延迟，提高吞吐量。适合高丢包、不稳定网络环境，可保证视频、游戏和即时通讯流量的稳定性和流畅体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 的路由规则能否实现分国家代理？</h5></div>
@@ -466,16 +466,16 @@ A：可以。使用 Clash Meta、Clash Classic 等免费内核版本，不存在
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-9-26-free-shadowrocket-node.htm" title="FreeV2rayNode节点订阅每天更新20.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.2M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-19.htm" title="FreeV2rayNode节点订阅每天更新21.8M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.8M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-27.htm" title="FreeV2rayNode节点订阅每天更新20.1M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.1M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-25.htm" title="FreeV2rayNode节点订阅每天更新22.9M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.9M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-27.htm" title="FreeV2rayNode节点订阅每天更新20.1M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.1M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-v2ray-subscribe-2026-9-23.htm" title="FreeV2rayNode节点订阅每天更新22.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新22.6M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-v2ray-subscribe-2026-9-11.htm" title="FreeV2rayNode节点订阅每天更新21.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.2M/S免费节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-15.htm" title="FreeV2rayNode节点订阅每天更新21M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-28-free-ssr-subscribe.htm" title="FreeV2rayNode节点订阅每天更新19.9M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.9M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-20-clash-v2ray-ss-ssr.htm" title="FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.2M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新18.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.6M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-11.htm" title="FreeV2rayNode节点订阅每天更新19.4M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.4M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-10-free-clash.htm" title="FreeV2rayNode节点订阅每天更新19.1M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新19.1M/S免费节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新18.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.6M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-2-clash-v2ray-ss-ssr.htm" title="FreeV2rayNode节点订阅每天更新20.7M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.7M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-10-node-share.htm" title="FreeV2rayNode节点订阅每天更新18.8M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新18.8M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-5.htm" title="FreeV2rayNode节点订阅每天更新20.5M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新20.5M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-7.htm" title="FreeV2rayNode节点订阅每天更新21.7M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.7M/S免费节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-8-free-node-subscribe.htm" title="FreeV2rayNode节点订阅每天更新21.6M/S免费节点订阅链接地址">FreeV2rayNode节点订阅每天更新21.6M/S免费节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -487,13 +487,10 @@ A：可以。使用 Clash Meta、Clash Classic 等免费内核版本，不存在
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">8</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                     </ul>
     </div>
